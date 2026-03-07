@@ -40,7 +40,16 @@
 
     <!-- Hero 区域 -->
     <section class="hero">
-        <div class="hero-bg"></div>
+        <!-- 视频背景 -->
+        <div class="hero-video-container">
+            <video class="hero-video" id="heroVideo" autoplay loop muted playsinline preload="auto">
+                <source src="videos/hero-video.mp4" type="video/mp4">
+                您的浏览器不支持视频标签
+            </video>
+            <!-- 视频遮罩层 -->
+            <div class="hero-overlay"></div>
+        </div>
+
         <div class="container">
             <div class="hero-content fade-in">
                 <h1 class="hero-title">

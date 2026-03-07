@@ -4,6 +4,10 @@
 
 这是一个基于 HTML/CSS/JavaScript 的个人博客网站，采用黑金风格设计。
 
+### 🚀 快速部署到 GitHub Pages
+
+> **想要快速上线？** 查看 [GitHub Pages 部署指南](GITHUB_PAGES_DEPLOYMENT.md)，3分钟即可完成免费部署！
+
 ### 包含页面
 
 - 🏠 **首页** - 个人简介和作品展示
@@ -103,23 +107,36 @@ python -m http.server 8000
 
 ## 🌐 部署到服务器
 
-### GitHub Pages
+### GitHub Pages（推荐，免费）
 
-1. 创建 GitHub 仓库
+📖 **详细部署指南**：查看 [GITHUB_PAGES_DEPLOYMENT.md](GITHUB_PAGES_DEPLOYMENT.md)
+
+**快速步骤**：
+1. 在 GitHub 创建新仓库（Public）
 2. 上传所有文件到仓库
-3. 进入仓库 Settings → Pages
-4. 选择分支（main）并保存
-5. 访问 `https://your-username.github.io/your-repo/`
+3. Settings → Pages → 选择 main 分支 → Save
+4. 等待 1-5 分钟
+5. 访问：`https://your-username.github.io/your-repo/`
 
-### Vercel（推荐）
+**使用 Git 命令行**：
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/your-username/your-repo.git
+git push -u origin main
+```
+
+### Vercel（免费，自动部署）
 
 1. 访问 [vercel.com](https://vercel.com) 并登录
 2. 点击 "New Project"
-3. 上传 `beedog-website` 文件夹
+3. 上传 `beedog-website-package` 文件夹
 4. 点击 "Deploy"
 5. 等待部署完成，获得访问链接
 
-### Netlify
+### Netlify（免费，一键部署）
 
 1. 访问 [netlify.com](https://netlify.com) 并登录
 2. 拖拽 `beedog-website` 文件夹到页面
@@ -165,6 +182,8 @@ python -m http.server 8000
 
 - `GET_STARTED.md` - 详细的使用和部署指南
 - `QUICK_START_COVERS.md` - 添加书籍封面的快速指南
+- `GITHUB_PAGES_DEPLOYMENT.md` - GitHub Pages 完整部署指南（含自定义域名）
+- `BUTTON_STYLES_OPTIMIZED.md` - 按钮样式优化说明
 
 ## 📄 许可证
 

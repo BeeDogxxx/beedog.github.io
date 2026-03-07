@@ -115,3 +115,65 @@ const heroStats = document.querySelector('.hero-stats');
 if (heroStats) {
     statsObserver.observe(heroStats);
 }
+
+// ==================== 
+// 视频背景控制
+// ==================== 
+const heroVideo = document.getElementById('heroVideo');
+
+if (heroVideo) {
+    // 尝试播放视频
+    const playVideo = () => {
+        heroVideo.play().then(() => {
+            console.log('✅ 视频背景播放成功');
+        }).catch(error => {
+            console.warn('⚠️ 视频自动播放失败:', error);
+            console.log('💡 可能的原因：浏览器策略、视频格式不支持或网络问题');
+            console.log('📹 视频文件:', heroVideo.src);
+            
+            // 如果自动播放失败，尝试静音播放
+            heroVideo.muted = true;
+            heroVideo.play().catch(e => {
+                console.error('❌ 即使静音也无法播放:', e);
+            });
+        });
+    };
+
+    // 页面加载完成后尝试播放
+    window.addEventListener('load', () => {
+        // 确保视频已加载
+        if (heroVideo.readyState >= 2) {
+            playVideo();
+        } else {
+            heroVideo.addEventListener('canplay', playVideo, { once: true });
+        }
+    });
+
+    // 监听视频事件
+    heroVideo.addEventListener('error', (e) => {
+        console.error('❌ 视频加载错误:', e);
+        console.error('错误代码:', heroVideo.error?.code);
+        console.error('错误信息:', heroVideo.error?.message);
+    });
+
+    heroVideo.addEventListener('loadeddata', () => {
+        console.log('✅ 视频数据已加载');
+        console.log('📹 视频时长:', heroVideo.duration, '秒');
+        console.log('📹 视频尺寸:', heroVideo.videoWidth, 'x', heroVideo.videoHeight);
+    });
+
+    // 监听播放状态
+    heroVideo.addEventListener('play', () => {
+        console.log('▶️ 视频开始播放');
+    });
+
+    heroVideo.addEventListener('pause', () => {
+        console.log('⏸️ 视频暂停');
+    });
+
+    heroVideo.addEventListener('ended', () => {
+        console.log('🔄 视频播放结束，循环播放');
+    });
+} else {
+    console.warn('⚠️ 未找到视频元素 #heroVideo');
+}
