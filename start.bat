@@ -4,13 +4,11 @@ echo ========================================
 echo   蜜蜂狗BeeDog - 网站启动器
 echo ========================================
 echo.
-echo 正在启动本地服务器...
-echo.
 
 REM 检查 Python 是否安装
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [错误] 未检测到 Python，请先安装 Python 3
+    echo [错误] 未检测到 Python，请先安装 Python
     echo 下载地址: https://www.python.org/downloads/
     pause
     exit /b 1

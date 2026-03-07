@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>启动指南 - 蜜蜂狗BeeDog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #D4AF37;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #D4AF37;
+        }
+
+        .warning {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid #D4AF37;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .warning h2 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .warning p {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .instructions {
+            text-align: left;
+            margin: 40px 0;
+        }
+
+        .instructions h2 {
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #D4AF37;
+        }
+
+        .step h3 {
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+
+        .step code {
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: #4CAF50;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37, #B8962F);
+            color: #1a1a1a;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .note {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+
+        .platform {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .platform-btn {
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid #D4AF37;
+            padding: 20px 30px;
+            border-radius: 10px;
+            color: #D4AF37;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .platform-btn:hover {
+            background: #D4AF37;
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🐝</div>
+        <h1>蜜蜂狗 BeeDog</h1>
+
+        <div class="warning">
+            <h2>⚠️ 重要提示</h2>
+            <p>
+                <strong>不要直接双击 index.html 文件！</strong><br><br>
+                直接打开 HTML 文件使用的是 <code>file://</code> 协议，浏览器会阻止视频自动播放，导致你看不到视频背景。<br><br>
+                <strong>必须通过 HTTP 服务器运行才能正常显示视频！</strong>
+            </p>
+        </div>
+
+        <h2>选择你的操作系统启动网站：</h2>
+
+        <div class="platform">
+            <a href="#" onclick="alert('请在文件管理器中找到 start.bat 文件并双击运行'); return false;" class="platform-btn">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🪟</div>
+                <div>Windows</div>
+                <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">双击 start.bat</div>
+            </a>
+
+            <a href="#" onclick="alert('请在终端中运行 ./start.sh 命令'); return false;" class="platform-btn">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🍎</div>
+                <div>Mac/Linux</div>
+                <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">运行 ./start.sh</div>
+            </a>
+        </div>
+
+        <div class="instructions">
+            <h2>📋 详细操作步骤</h2>
+
+            <div class="step">
+                <h3>Windows 用户：</h3>
+                <p>1. 打开文件夹 <code>beedog-website-package</code></p>
+                <p>2. 双击运行 <code>start.bat</code> 文件</p>
+                <p>3. 浏览器会自动打开：<code>http://localhost:8000</code></p>
+            </div>
+
+            <div class="step">
+                <h3>Mac/Linux 用户：</h3>
+                <p>1. 打开终端</p>
+                <p>2. 进入文件夹：<code>cd beedog-website-package</code></p>
+                <p>3. 运行：<code>./start.sh</code></p>
+                <p>4. 浏览器访问：<code>http://localhost:8000</code></p>
+            </div>
+
+            <div class="step">
+                <h3>手动启动（所有平台）：</h3>
+                <p>在文件夹内打开终端，运行：</p>
+                <code>python -m http.server 8000</code>
+            </div>
+        </div>
+
+        <p class="note">
+            💡 提示：启动后访问 http://localhost:8000 即可看到带有视频背景的网站<br><br>
+            📦 部署到 GitHub Pages 后，视频会自动正常显示，无需启动服务器
+        </p>
+    </div>
+</body>
+</html>
