@@ -294,6 +294,34 @@
     color: var(--gold-light);
 }
 
+/* 博客图片样式 */
+.blog-image {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.blog-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-fast);
+}
+
+.blog-image img:hover {
+    transform: scale(1.02);
+    border-color: var(--gold-primary);
+    box-shadow: var(--shadow-gold);
+}
+
+.blog-image figcaption {
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     .page-title {
