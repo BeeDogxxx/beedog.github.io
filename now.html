@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BeeDog · NOW · 当下在做什么">
+    <meta name="theme-color" content="#FFD23F">
+    <title>● NOW · 当下 - BeeDog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/pixel-extras.css">
+</head>
+<body>
+    <div class="score-hud" id="scoreHud"><span class="score-bee">🐝</span><span class="score-label">SCORE</span><span class="score-value" id="scoreValue">0000</span></div>
+    <div class="bee-cursor" id="beeCursor" aria-hidden="true">🐝</div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><span class="brand-icon">🐝</span><span class="brand-text">BeeDog</span></a></div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于我</a></li>
+                <li><a href="portfolio.html">作品集</a></li>
+                <li><a href="blog.html">博客</a></li>
+                <li><a href="books.html">最近在看的书</a></li>
+                <li><a href="travel.html">我去过的地方</a></li>
+                <li><a href="now.html" class="active">NOW</a></li>
+                <li><a href="game.html">🎮</a></li>
+                <li><a href="guestbook.html">留言板</a></li>
+                <li><a href="contact.html">联系方式</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">● NOW</h1>
+            <p class="page-subtitle">当下 · WHAT I'M DOING NOW</p>
+        </div>
+    </section>
+
+    <section style="padding: 40px 0 100px;">
+        <div class="container">
+            <div class="now-wrap">
+                <div class="now-hero">
+                    <div class="now-date" id="nowDate">UPDATED · 2026.04</div>
+                    <div class="now-headline">
+                        在 <span style="color:var(--bee-yellow-bright)">认养一头牛</span> 磨 AI 客服的数据飞轮,
+                        同时在试图搞懂怎么让 Agent 更像"一个靠谱的同事"。
+                    </div>
+                    <p style="color:var(--text-secondary); line-height:1.9; margin-top:18px;">
+                        受 <a href="https://nownownow.com/about" target="_blank" style="color:var(--bee-yellow); text-decoration:underline;">nownownow.com</a> 启发 —
+                        这一页只写"此刻"。不是"我是谁",也不是"我做过什么",而是——如果你今天约我吃饭,我会跟你聊的那些事。
+                    </p>
+                </div>
+
+                <div class="now-grid">
+                    <div class="now-card">
+                        <h3>🎯 工作上在推的</h3>
+                        <ul>
+                            <li>构建 Bad Case 数据飞轮,让 AI 客服的边缘场景越来越少</li>
+                            <li>试点 AIGC Agent 自动生成商详卖点与活动 Slogan</li>
+                            <li class="done">把关键意图识别准确率拉到 21.2%+</li>
+                        </ul>
+                    </div>
+
+                    <div class="now-card">
+                        <h3>📚 在读的书</h3>
+                        <ul>
+                            <li>《高效能人士的七个习惯》 · 35% · 被动→主动</li>
+                            <li>《被讨厌的勇气》 · 60% · 阿德勒让人很上头</li>
+                            <li class="done">《金字塔原理》 · MECE 从此上头</li>
+                        </ul>
+                    </div>
+
+                    <div class="now-card">
+                        <h3>🤖 在折腾的 AI 工具</h3>
+                        <ul>
+                            <li>Cursor + Claude Code 写个人小工具</li>
+                            <li>用 Prompt 工程给客服场景建评估集</li>
+                            <li>研究多 Agent 协同怎么不打架</li>
+                        </ul>
+                    </div>
+
+                    <div class="now-card">
+                        <h3>🏃 生活里的</h3>
+                        <ul>
+                            <li>每周 2 次跑步,目标 5K 进 25 分钟</li>
+                            <li>周末在西湖边晃,偶尔骑行到龙井</li>
+                            <li>在攒一个下一次出远门的清单</li>
+                        </ul>
+                    </div>
+
+                    <div class="now-card">
+                        <h3>💭 最近在想的</h3>
+                        <ul>
+                            <li>AI 的 "人味" 到底来自哪里</li>
+                            <li>数据驱动 vs 直觉判断的边界</li>
+                            <li>25 岁之前要不要再换一次赛道</li>
+                        </ul>
+                    </div>
+
+                    <div class="now-card">
+                        <h3>📮 欢迎聊</h3>
+                        <ul>
+                            <li>AI 运营 / Prompt 工程实战</li>
+                            <li>电商策略 / 数据分析</li>
+                            <li>或者就随便聊聊 · 📧 <a href="mailto:s1870567841@163.com" style="color:var(--bee-yellow)">邮件我</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin-top:40px; text-align:center; font-family:'Press Start 2P',monospace; font-size:10px; color:var(--text-muted); letter-spacing:2px;">
+                    THIS PAGE IS A <span style="color:var(--bee-yellow)">NOW PAGE</span> · 按 <a href="index.html" style="color:var(--bee-yellow)">回首页</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="brand-icon">🐝</span><span class="brand-text">BeeDog</span></div>
+                <p class="footer-description">蜜蜂狗BeeDog的说明书</p>
+                <p class="footer-copyright">© 2025 苏笔辉</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="secret-star" id="secretStar" aria-label="神秘星星">✦</button>
+    <div class="toast" id="toast"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/effects.js"></script>
+    <script>
+        const d = new Date();
+        document.getElementById('nowDate').textContent =
+            'UPDATED · ' + d.getFullYear() + '.' + String(d.getMonth()+1).padStart(2,'0');
+    </script>
+</body>
+</html>

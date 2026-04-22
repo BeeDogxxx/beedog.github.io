@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BeeDog 迷你小游戏 · 蜜蜂躲避击中技能">
+    <meta name="theme-color" content="#FFD23F">
+    <title>🎮 BEE QUEST · 蜜蜂小游戏 - BeeDog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/pixel-extras.css">
+</head>
+<body>
+    <div class="score-hud" id="scoreHud"><span class="score-bee">🐝</span><span class="score-label">SCORE</span><span class="score-value" id="scoreValue">0000</span></div>
+    <div class="bee-cursor" id="beeCursor" aria-hidden="true">🐝</div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><span class="brand-icon">🐝</span><span class="brand-text">BeeDog</span></a></div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于我</a></li>
+                <li><a href="portfolio.html">作品集</a></li>
+                <li><a href="blog.html">博客</a></li>
+                <li><a href="books.html">最近在看的书</a></li>
+                <li><a href="travel.html">我去过的地方</a></li>
+                <li><a href="now.html">NOW</a></li>
+                <li><a href="game.html" class="active">🎮</a></li>
+                <li><a href="guestbook.html">留言板</a></li>
+                <li><a href="contact.html">联系方式</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">🎮 BEE QUEST</h1>
+            <p class="page-subtitle">MINI GAME · 蜜蜂冒险</p>
+        </div>
+    </section>
+
+    <section style="padding: 40px 0 100px;">
+        <div class="container">
+            <div class="game-wrap">
+                <div class="game-header">
+                    <div class="g-stat">SCORE <span id="gScore">0000</span></div>
+                    <div class="g-stat">HI <span id="gHi">0000</span></div>
+                    <div class="g-stat">TIME <span id="gTime">30</span>s</div>
+                    <div class="g-stat">HP <span id="gHp">❤❤❤</span></div>
+                </div>
+                <div class="game-stage" id="gameStage">
+                    <div class="g-player" id="gPlayer">🐝</div>
+                    <div class="g-overlay" id="gOverlay">
+                        <h2>▶ PRESS START</h2>
+                        <p>
+                            用 <b>鼠标</b> 或 <b>手指</b> 控制蜜蜂,<br>
+                            撞击 <b>技能图标 📊 🎯 🤖 💡</b> +10 EXP,<br>
+                            躲开 <b>炸弹 💣</b> 和 <b>叉子 🍴</b>,<br>
+                            30 秒内拿高分!
+                        </p>
+                        <button class="btn btn-primary" id="gStart" style="margin-top:10px;">START</button>
+                        <div class="g-instructions">
+                            ← → 方向键 / 触屏 / 鼠标 均可 · 分数会同步到 SCORE HUD
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top:16px; text-align:center; font-family:'Press Start 2P',monospace; font-size:10px; color:var(--text-muted); letter-spacing:2px;">
+                    TIP · 连续击中同一图标会 <span style="color:var(--bee-yellow)">COMBO 加成</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><span class="brand-icon">🐝</span><span class="brand-text">BeeDog</span></div>
+                <p class="footer-description">蜜蜂狗BeeDog的说明书</p>
+                <p class="footer-copyright">© 2025 苏笔辉</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="secret-star" id="secretStar" aria-label="神秘星星">✦</button>
+    <div class="toast" id="toast"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/effects.js"></script>
+    <script>
+    (function(){
+        const stage = document.getElementById('gameStage');
+        const player = document.getElementById('gPlayer');
+        const overlay = document.getElementById('gOverlay');
+        const btnStart = document.getElementById('gStart');
+        const elScore = document.getElementById('gScore');
+        const elHi    = document.getElementById('gHi');
+        const elTime  = document.getElementById('gTime');
+        const elHp    = document.getElementById('gHp');
+
+        const TARGETS = ['📊','🎯','🤖','💡'];
+        const ENEMIES = ['💣','🍴','⚡'];
+
+        let W=0,H=0, px=0,py=0, tx=0,ty=0;
+        let running=false, score=0, hp=3, timeLeft=30;
+        let lastTarget=null, combo=1;
+        let entities=[];
+        let tickId=null, timerId=null, spawnAcc=0;
+        let hi = parseInt(localStorage.getItem('beedog_game_hi')||'0',10);
+        elHi.textContent = String(hi).padStart(4,'0');
+
+        const fit = () => {
+            const r = stage.getBoundingClientRect();
+            W = r.width; H = r.height;
+            if (!running) { px=W/2; py=H*0.8; tx=px; ty=py; positionPlayer(); }
+        };
+        window.addEventListener('resize', fit);
+
+        const positionPlayer = () => {
+            player.style.left = (px-20) + 'px';
+            player.style.top  = (py-14) + 'px';
+        };
+
+        stage.addEventListener('pointermove', e => {
+            if (!running) return;
+            const r = stage.getBoundingClientRect();
+            tx = e.clientX - r.left;
+            ty = e.clientY - r.top;
+        });
+        stage.addEventListener('touchmove', e => {
+            if (!running || !e.touches[0]) return;
+            const r = stage.getBoundingClientRect();
+            tx = e.touches[0].clientX - r.left;
+            ty = e.touches[0].clientY - r.top;
+            e.preventDefault();
+        }, {passive:false});
+        window.addEventListener('keydown', e => {
+            if (!running) return;
+            if (e.key==='ArrowLeft')  tx = Math.max(20, px-40);
+            if (e.key==='ArrowRight') tx = Math.min(W-20, px+40);
+            if (e.key==='ArrowUp')    ty = Math.max(20, py-40);
+            if (e.key==='ArrowDown')  ty = Math.min(H-20, py+40);
+        });
+
+        btnStart.addEventListener('click', start);
+
+        function start() {
+            fit();
+            running = true;
+            score = 0; hp = 3; timeLeft = 30; combo=1; lastTarget=null;
+            entities.forEach(e=>e.el.remove()); entities=[];
+            overlay.classList.add('hidden');
+            updateHud();
+            spawnAcc = 0;
+            timerId = setInterval(() => {
+                timeLeft--;
+                elTime.textContent = timeLeft;
+                if (timeLeft<=0) gameOver('TIME UP');
+            }, 1000);
+            tickId = requestAnimationFrame(loop);
+        }
+
+        let lastT=0;
+        function loop(t) {
+            if (!running) return;
+            const dt = Math.min(40, t - (lastT||t)); lastT=t;
+            // 玩家插值
+            px += (tx - px) * 0.22;
+            py += (ty - py) * 0.22;
+            px = Math.max(20, Math.min(W-20, px));
+            py = Math.max(20, Math.min(H-14, py));
+            positionPlayer();
+
+            // 生成实体
+            spawnAcc += dt;
+            if (spawnAcc > 700) {
+                spawnAcc = 0;
+                spawn();
+            }
+
+            // 更新
+            for (let i=entities.length-1;i>=0;i--) {
+                const e = entities[i];
+                e.x += e.vx * dt/16;
+                e.y += e.vy * dt/16;
+                e.el.style.left = (e.x-16)+'px';
+                e.el.style.top  = (e.y-16)+'px';
+                if (e.y > H+30 || e.x < -30 || e.x > W+30) {
+                    e.el.remove(); entities.splice(i,1); continue;
+                }
+                // 碰撞
+                const dx = e.x - px, dy = e.y - py;
+                if (dx*dx + dy*dy < 28*28) {
+                    if (e.kind === 'target') {
+                        hitTarget(e);
+                    } else {
+                        hitEnemy(e);
+                    }
+                    e.el.remove(); entities.splice(i,1);
+                }
+            }
+
+            tickId = requestAnimationFrame(loop);
+        }
+
+        function spawn() {
+            const kind = Math.random() < 0.6 ? 'target' : 'enemy';
+            const e = document.createElement('div');
+            e.className = kind === 'target' ? 'g-target' : 'g-enemy';
+            const icon = kind === 'target'
+                ? TARGETS[Math.floor(Math.random()*TARGETS.length)]
+                : ENEMIES[Math.floor(Math.random()*ENEMIES.length)];
+            e.textContent = icon;
+            const x = 30 + Math.random()*(W-60);
+            const y = -30;
+            e.style.left = (x-16)+'px';
+            e.style.top  = (y-16)+'px';
+            stage.appendChild(e);
+            entities.push({ el:e, kind, icon, x, y, vx: (Math.random()-0.5)*1.2, vy: 1.8 + Math.random()*2.2 });
+        }
+
+        function hitTarget(e) {
+            if (e.icon === lastTarget) { combo = Math.min(5, combo+1); }
+            else { combo = 1; lastTarget = e.icon; }
+            const gain = 10 * combo;
+            score += gain;
+            burstParticles(e.x, e.y, '#FFD23F');
+            popText(e.x, e.y, '+'+gain + (combo>1 ? ' x'+combo : ''));
+            updateHud();
+            window.BeeDogAddScore && window.BeeDogAddScore(1);
+        }
+        function hitEnemy(e) {
+            hp--;
+            combo = 1; lastTarget=null;
+            burstParticles(e.x, e.y, '#FF3B3B');
+            popText(e.x, e.y, '-1 HP');
+            stage.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],{duration:180});
+            updateHud();
+            if (hp<=0) gameOver('GAME OVER');
+        }
+        function burstParticles(x,y,color){
+            for (let i=0;i<8;i++){
+                const p = document.createElement('div');
+                p.className = 'g-particle';
+                p.style.background = color;
+                p.style.left = (x-3)+'px';
+                p.style.top  = (y-3)+'px';
+                stage.appendChild(p);
+                const ang = Math.random()*Math.PI*2;
+                const dist = 20 + Math.random()*30;
+                p.animate([
+                    { transform:'translate(0,0)', opacity:1 },
+                    { transform:`translate(${Math.cos(ang)*dist}px, ${Math.sin(ang)*dist}px)`, opacity:0 }
+                ], { duration: 500, easing:'ease-out' }).onfinish = () => p.remove();
+            }
+        }
+        function popText(x,y,txt){
+            const t = document.createElement('div');
+            t.textContent = txt;
+            t.style.cssText = `position:absolute;left:${x}px;top:${y}px;color:var(--bee-yellow);font-family:'Press Start 2P',monospace;font-size:10px;text-shadow:2px 2px 0 #000;pointer-events:none;z-index:5;`;
+            stage.appendChild(t);
+            t.animate([
+                {transform:'translate(-50%,0)', opacity:1},
+                {transform:'translate(-50%,-36px)', opacity:0}
+            ], {duration:700, easing:'ease-out'}).onfinish = () => t.remove();
+        }
+
+        function updateHud() {
+            elScore.textContent = String(score).padStart(4,'0');
+            elHp.textContent = '❤'.repeat(Math.max(0,hp)) + '<span style="opacity:.3">'+'❤'.repeat(Math.max(0,3-hp))+'</span>';
+            elHp.innerHTML = '❤'.repeat(Math.max(0,hp)) + '<span style="opacity:.3">'+'❤'.repeat(Math.max(0,3-hp))+'</span>';
+        }
+
+        function gameOver(reason) {
+            running = false;
+            cancelAnimationFrame(tickId);
+            clearInterval(timerId);
+            entities.forEach(e=>e.el.remove()); entities=[];
+            if (score > hi) {
+                hi = score;
+                localStorage.setItem('beedog_game_hi', String(hi));
+                elHi.textContent = String(hi).padStart(4,'0');
+                window.BeeDogRain && window.BeeDogRain(30);
+                window.BeeDogToast && window.BeeDogToast('★ NEW HI SCORE ' + hi);
+            }
+            overlay.innerHTML = `
+                <h2>${reason}</h2>
+                <p>最终得分 <b style="color:var(--bee-yellow-bright)">${String(score).padStart(4,'0')}</b><br>
+                   最高记录 ${String(hi).padStart(4,'0')}</p>
+                <button class="btn btn-primary" id="gRestart">RESTART</button>
+                <div class="g-instructions">击中技能 +10 EXP · 连击加成最高 x5</div>
+            `;
+            overlay.classList.remove('hidden');
+            document.getElementById('gRestart').addEventListener('click', start);
+        }
+
+        fit();
+    })();
+    </script>
+</body>
+</html>

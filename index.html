@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="蜜蜂狗BeeDog的说明书 - 苏笔辉的个人博客">
-    <title>蜜蜂狗BeeDog的说明书</title>
+    <meta name="description" content="蜜蜂狗BeeDog的说明书 - 苏笔辉的个人博客 · 像素游戏风·AI与电商探索">
+    <meta name="theme-color" content="#FFD23F">
+    <title>🐝 BeeDog · PRESS START</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="css/pixel-extras.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- 右上角得分板 HUD -->
+    <div class="score-hud" id="scoreHud" title="每次点击+1 EXP · 累计到100触发彩蛋">
+        <span class="score-bee">🐝</span>
+        <span class="score-label">SCORE</span>
+        <span class="score-value" id="scoreValue">0000</span>
+    </div>
+
+    <!-- 跟随鼠标的蜜蜂 -->
+    <div class="bee-cursor" id="beeCursor" aria-hidden="true">🐝</div>
+
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="container">
@@ -21,16 +32,19 @@
                     <span class="brand-text">BeeDog</span>
                 </a>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="active">首页</a></li>
                 <li><a href="about.html">关于我</a></li>
                 <li><a href="portfolio.html">作品集</a></li>
                 <li><a href="blog.html">博客</a></li>
                 <li><a href="books.html">最近在看的书</a></li>
                 <li><a href="travel.html">我去过的地方</a></li>
+                <li><a href="now.html">NOW</a></li>
+                <li><a href="game.html">🎮</a></li>
+                <li><a href="guestbook.html">留言板</a></li>
                 <li><a href="contact.html">联系方式</a></li>
             </ul>
-            <div class="hamburger">
+            <div class="hamburger" id="hamburger" aria-label="菜单">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -38,15 +52,23 @@
         </div>
     </nav>
 
-    <!-- Hero 区域 -->
-    <section class="hero">
-        <!-- 视频背景 -->
-        <div class="hero-video-container">
-            <video class="hero-video" id="heroVideo" autoplay loop muted playsinline preload="auto">
-                <source src="videos/hero-video.mp4" type="video/mp4">
-                您的浏览器不支持视频标签
-            </video>
-            <!-- 视频遮罩层 -->
+    <!-- Hero 区 — 游戏开始画面 -->
+    <section class="hero hero-pixel">
+        <!-- 纯像素背景：星空 + 蜂巢 + 扫描线 -->
+        <div class="hero-pixel-bg" aria-hidden="true">
+            <div class="pixel-stars"></div>
+            <div class="pixel-honeycomb"></div>
+            <div class="pixel-clouds">
+                <span class="cloud c1"></span>
+                <span class="cloud c2"></span>
+                <span class="cloud c3"></span>
+            </div>
+            <div class="pixel-ground"></div>
+            <div class="pixel-bee" title="bee">
+                <span class="pb-wing"></span>
+                <span class="pb-body"></span>
+                <span class="pb-wing pb-wing-r"></span>
+            </div>
             <div class="hero-overlay"></div>
         </div>
 
@@ -56,26 +78,28 @@
                     <span class="title-line">蜜蜂狗</span>
                     <span class="title-line title-gradient">BeeDog</span>
                 </h1>
-                <p class="hero-subtitle">说明书</p>
+                <p class="hero-subtitle">说 明 书</p>
                 <p class="hero-description">
-                    探索AI与电商的融合创新 · 运营策略 · 数据驱动<br>
-                    用科技赋能业务，用数据驱动决策
+                    🎮 <b>Quest 01</b>：探索 AI 与电商的融合创新 · 运营策略 · 数据驱动<br>
+                    <span style="opacity:.8">用科技赋能业务,用数据驱动决策——每一次点击,都是一次 +1 EXP</span>
                 </p>
                 <div class="hero-buttons">
-                    <a href="portfolio.html" class="btn btn-primary">查看作品</a>
-                    <a href="contact.html" class="btn btn-secondary">联系我</a>
+                    <a href="portfolio.html" class="btn btn-primary js-clickable">查看作品</a>
+                    <a href="contact.html" class="btn btn-secondary js-clickable">联系我</a>
                 </div>
+                <span class="hidden-hint">HINT · 试试键盘输入 ↑↑↓↓←→←→BA</span>
             </div>
+
             <div class="hero-stats fade-in">
-                <div class="stat-item">
+                <div class="stat-item js-clickable" data-label="HP">
                     <div class="stat-number">3+</div>
                     <div class="stat-label">年电商运营经验</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item js-clickable" data-label="MP">
                     <div class="stat-number">2+</div>
                     <div class="stat-label">AI项目实战</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item js-clickable" data-label="EXP">
                     <div class="stat-number">100%</div>
                     <div class="stat-label">数据驱动决策</div>
                 </div>
@@ -83,54 +107,54 @@
         </div>
     </section>
 
-    <!-- 重点项目展示 -->
+    <!-- 重点项目 -->
     <section class="featured-projects">
         <div class="container">
             <h2 class="section-title fade-in">重点项目</h2>
             <div class="projects-grid">
-                <div class="project-card featured card-hover scale-in">
+                <div class="project-card featured card-hover scale-in js-clickable" title="双击试试看?">
                     <div class="project-icon icon-hover">🎬</div>
                     <h3 class="project-title">快手电商运营项目</h3>
                     <p class="project-company">快手电商 · 行业运营</p>
                     <p class="project-description">
-                        打造多个百万单品，优化类目品退率下降50%，推动GMV提升40%
+                        打造多个百万单品,优化类目品退率下降50%,推动GMV提升40%
                     </p>
-                    <a href="portfolio.html" class="project-link">了解更多 →</a>
+                    <a href="portfolio.html" class="project-link js-clickable">了解更多 →</a>
                 </div>
-                <div class="project-card featured card-hover scale-in">
+                <div class="project-card featured card-hover scale-in js-clickable" title="双击试试看?">
                     <div class="project-icon icon-hover">🤖</div>
                     <h3 class="project-title">AI客服训练数据体系</h3>
                     <p class="project-company">认养一头牛 · AI策略运营</p>
                     <p class="project-description">
-                        构建AI训练数据体系，关键意图识别准确率提升21.2%，用户满意度达93%
+                        构建AI训练数据体系,关键意图识别准确率提升21.2%,用户满意度达93%
                     </p>
-                    <a href="portfolio.html" class="project-link">了解更多 →</a>
+                    <a href="portfolio.html" class="project-link js-clickable">了解更多 →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 技能展示 -->
+    <!-- 技能区 -->
     <section class="skills">
         <div class="container">
             <h2 class="section-title">核心能力</h2>
             <div class="skills-grid">
-                <div class="skill-item">
+                <div class="skill-item js-clickable">
                     <div class="skill-icon">📊</div>
                     <h3>数据分析</h3>
                     <p>SQL · Python · 数据驱动决策</p>
                 </div>
-                <div class="skill-item">
+                <div class="skill-item js-clickable">
                     <div class="skill-icon">🎯</div>
                     <h3>运营策略</h3>
                     <p>用户运营 · 商家运营 · 品类治理</p>
                 </div>
-                <div class="skill-item">
+                <div class="skill-item js-clickable">
                     <div class="skill-icon">🤖</div>
                     <h3>AI应用</h3>
                     <p>Prompt工程 · Agent开发 · 数据标注</p>
                 </div>
-                <div class="skill-item">
+                <div class="skill-item js-clickable">
                     <div class="skill-icon">💡</div>
                     <h3>产品策划</h3>
                     <p>用户调研 · 产品优化 · A/B测试</p>
@@ -147,19 +171,29 @@
                     <span class="brand-icon">🐝</span>
                     <span class="brand-text">BeeDog</span>
                 </div>
-                <p class="footer-description">蜜蜂狗BeeDog的说明书 - 探索AI与电商的无限可能</p>
+                <p class="footer-description">蜜蜂狗BeeDog的说明书 — 探索AI与电商的无限可能</p>
                 <div class="footer-links">
-                    <a href="index.html">首页</a>
-                    <a href="about.html">关于我</a>
-                    <a href="portfolio.html">作品集</a>
-                    <a href="blog.html">博客</a>
-                    <a href="travel.html">我去过的地方</a>
-                    <a href="contact.html">联系方式</a>
+                    <a href="index.html" class="js-clickable">首页</a>
+                    <a href="about.html" class="js-clickable">关于我</a>
+                    <a href="portfolio.html" class="js-clickable">作品集</a>
+                    <a href="blog.html" class="js-clickable">博客</a>
+                    <a href="books.html" class="js-clickable">书架</a>
+                    <a href="travel.html" class="js-clickable">足迹</a>
+                    <a href="now.html" class="js-clickable">NOW</a>
+                    <a href="game.html" class="js-clickable">小游戏</a>
+                    <a href="guestbook.html" class="js-clickable">留言板</a>
+                    <a href="contact.html" class="js-clickable">联系方式</a>
                 </div>
-                <p class="footer-copyright">© 2025 苏笔辉. All rights reserved.</p>
+                <p class="footer-copyright">© 2025 苏笔辉 · GAME OVER? INSERT COIN TO CONTINUE</p>
             </div>
         </div>
     </footer>
+
+    <!-- 左下角彩蛋按钮 -->
+    <button class="secret-star" id="secretStar" aria-label="神秘星星">✦</button>
+
+    <!-- Toast 提示 -->
+    <div class="toast" id="toast"></div>
 
     <script src="js/main.js"></script>
     <script src="js/effects.js"></script>
