@@ -320,6 +320,89 @@
 .map-land { fill: #8FAA5C; stroke: #3B5F23; stroke-width: 2; }
 .map-land.shadow { fill: #5E7A40; }
 
+/* 真实省份轮廓 — 默认未点亮 */
+.map-land-real .province {
+  fill: #2A2F3A;
+  stroke: #4A5060;
+  stroke-width: 0.8;
+  stroke-linejoin: miter;
+  transition: fill .2s, stroke .2s, filter .2s;
+  shape-rendering: geometricPrecision;
+}
+
+/* 已点亮的省份 — 蜜蜂黄发光 */
+.map-land-real .province.visited {
+  fill: var(--bee-yellow, #FFD23F);
+  stroke: var(--bee-honey, #E8A317);
+  stroke-width: 1.4;
+  filter: drop-shadow(0 0 8px rgba(255, 210, 63, 0.6))
+          drop-shadow(2px 2px 0 #3B2D08);
+  animation: province-glow 2.4s ease-in-out infinite;
+}
+@keyframes province-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(255, 210, 63, 0.5))
+            drop-shadow(2px 2px 0 #3B2D08);
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(255, 210, 63, 0.95))
+            drop-shadow(2px 2px 0 #3B2D08);
+  }
+}
+
+.map-land-real .province.visited:hover {
+  fill: #FFE680;
+  stroke: #FFFFFF;
+}
+.map-land-real .province.visited.selected {
+  fill: #FFFFFF;
+  stroke: var(--bee-yellow, #FFD23F);
+  stroke-width: 2;
+  animation: none;
+  filter: drop-shadow(0 0 18px rgba(255, 210, 63, 1));
+}
+
+/* 让整个中国地图板块有像素感底色 */
+.map-canvas {
+  background:
+    repeating-linear-gradient(0deg, rgba(255,210,63,.04) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(90deg, rgba(255,210,63,.04) 0 1px, transparent 1px 8px),
+    linear-gradient(180deg, #0A0E1A, #141828) !important;
+}
+
+/* 图例 */
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+  padding: 12px 16px;
+  background: var(--bee-coal, #1A1A1A);
+  border: 2px solid var(--bee-yellow, #FFD23F);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--text-secondary, #ccc);
+  letter-spacing: 1px;
+}
+.legend-item { display: inline-flex; align-items: center; gap: 8px; }
+.legend-swatch {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 2px solid #000;
+}
+.legend-swatch.lit {
+  background: var(--bee-yellow, #FFD23F);
+  box-shadow: 0 0 8px rgba(255,210,63,.7);
+}
+.legend-swatch.dark { background: #2A2F3A; border-color: #4A5060; }
+.legend-tip {
+  margin-left: auto;
+  color: var(--bee-yellow, #FFD23F);
+  animation: tip-blink 1.6s steps(2) infinite;
+}
+@keyframes tip-blink { 50% { opacity: 0.4; } }
+
 /* 城市关卡节点 */
 .map-pin {
   position: absolute;
