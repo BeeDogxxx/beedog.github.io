@@ -74,7 +74,7 @@ body {
             rgba(255, 210, 63, 0.035) 0 1px,
             transparent 1px 40px);
     background-attachment: fixed;
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><rect x='2' y='2' width='4' height='4' fill='%23FFD23F'/><rect x='6' y='6' width='4' height='4' fill='%230D0D0D'/><rect x='2' y='6' width='4' height='4' fill='%23FFD23F'/><rect x='6' y='2' width='4' height='4' fill='%230D0D0D'/></svg>") 4 4, auto;
+    cursor: default;
 }
 
 /* 英文/数字采用像素英文字 */
@@ -86,10 +86,10 @@ body {
     letter-spacing: 1px;
 }
 
-/* 可交互元素统一改为游戏手柄指针 */
+/* 可交互元素使用系统指针，保证所有浏览器稳定渲染 */
 a, button, .btn, .project-card, .skill-item, .stat-item, .nav-menu a,
 .hamburger {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><rect x='4' y='2' width='4' height='4' fill='%230D0D0D'/><rect x='4' y='6' width='4' height='4' fill='%23FFD23F'/><rect x='8' y='6' width='4' height='4' fill='%230D0D0D'/><rect x='4' y='10' width='4' height='4' fill='%23FFD23F'/><rect x='8' y='10' width='4' height='4' fill='%23FFD23F'/><rect x='12' y='10' width='4' height='4' fill='%230D0D0D'/><rect x='8' y='14' width='4' height='4' fill='%230D0D0D'/></svg>") 4 2, pointer;
+    cursor: pointer;
 }
 
 img {

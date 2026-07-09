@@ -70,7 +70,7 @@
   });
 
   // ---------- 蜜蜂光标 ----------
-  const bee = $('#beeCursor');
+  const bee = null;
   if (bee) {
     let bx = 0, by = 0, tx = 0, ty = 0;
     document.addEventListener('mousemove', (e) => { tx = e.clientX + 12; ty = e.clientY + 12; });

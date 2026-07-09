@@ -84,6 +84,7 @@
 /* ========== 蜜蜂跟随光标 ========== */
 .bee-cursor {
     position: fixed;
+    display: none;
     width: 28px;
     height: 28px;
     pointer-events: none;
