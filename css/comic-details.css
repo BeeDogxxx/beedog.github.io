@@ -208,3 +208,66 @@ body.interior-page:not(.motion-off) .page-header::after { animation: ink-arrive 
   @keyframes ink-arrive { from { opacity: 0; translate: 14px 5px; } to { opacity: .2; translate: 0 0; } }
 }
 @media(prefers-reduced-motion:reduce) { .editorial-enter { animation: none!important; } }
+
+/* Chapter covers: three original full-bleed scenes, with live display lettering. */
+.chapter-cover {
+  --chapter-accent: var(--comic-yellow);
+  width: min(92%,1480px); margin: 32px auto 0; border: 2px solid var(--comic-ink);
+  background: var(--comic-ink); box-shadow: 5px 5px 0 var(--comic-ink); isolation: isolate;
+}
+.chapter-cover-rail { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; padding: 12px 25px; background: var(--chapter-accent); color: var(--comic-ink); font: 650 12px/1.6 var(--bd-mono); letter-spacing: .12em; border-bottom: 2px solid var(--comic-ink); }
+.chapter-cover-scene { position: relative; min-height: clamp(465px,44vw,610px); display: flex; align-items: center; overflow: hidden; isolation: isolate; }
+.chapter-cover-art { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
+.chapter-cover-scene::after { content: ''; position: absolute; inset: 0; z-index: -2; pointer-events: none; background: linear-gradient(90deg,#171228e8 0%,#211c3875 35%,#211c3800 65%),linear-gradient(0deg,#171228a0,transparent 30%); }
+.chapter-cover-lettering { padding: 45px 5% 75px; width: 68%; color: var(--comic-paper); transform: rotate(-3deg); transform-origin: 25% 50%; }
+.chapter-cover-lettering span,.chapter-cover-lettering strong { display: block; font: italic 800 clamp(80px,9.3vw,142px)/.87 var(--bd-display); letter-spacing: -.025em; white-space: nowrap; text-shadow: 4px 5px 0 var(--comic-ink); }
+.chapter-cover-lettering strong { color: var(--chapter-accent); margin-top: .09em; text-shadow: 3px 4px 0 var(--comic-red),6px 7px 0 var(--comic-ink); }
+.chapter-cover-caption { position: absolute; right: 27px; bottom: 24px; padding: 9px 15px; max-width: calc(100% - 54px); color: var(--comic-ink); background: var(--comic-paper); border: 1px solid var(--comic-ink); box-shadow: 3px 3px 0 var(--comic-red); transform: rotate(-3deg); font: 600 14px/1.6 var(--bd-sans); }
+.chapter-cover-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px 30px; flex-wrap: wrap; padding: 25px 32px; border-top: 2px solid var(--comic-ink); background: var(--comic-paper) var(--art-grain) center/520px; background-blend-mode: multiply; }
+.chapter-cover-footer h1 { margin: 0; color: var(--comic-ink); font: 800 clamp(24px,2.5vw,36px)/1.4 var(--bd-heading); letter-spacing: -.035em; }
+.chapter-cover-footer p { margin: 0; color: var(--bd-copy); font: 400 15px/1.85 var(--bd-sans); }
+.chapter-cover--notes { --chapter-accent: #bac9ff; }
+.chapter-cover--notes .chapter-cover-lettering { transform: rotate(1deg); }
+.chapter-cover--notes .chapter-cover-lettering strong { font-size: clamp(76px,8.5vw,130px); text-shadow: 3px 4px 0 #414bae,6px 7px 0 var(--comic-ink); }
+.chapter-cover--travel .chapter-cover-art { object-position: center 67%; }
+.chapter-cover--notes .chapter-cover-art { object-position: center 58%; }
+.chapter-cover--travel .chapter-cover-lettering { transform: rotate(-5deg); }
+.chapter-cover--travel .chapter-cover-lettering span { font-size: clamp(90px,10vw,155px); }
+/* Shorter typographic chapter openers keep reading and contact pages within reach. */
+.chapter-title-card { --title-surface: var(--comic-ink); --title-copy: var(--comic-paper); --title-accent: var(--comic-yellow); background: var(--title-surface); border-bottom: 2px solid var(--comic-ink); overflow: hidden; position: relative; isolation: isolate; }
+.chapter-title-card::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--art-grain) center/520px; mix-blend-mode: soft-light; opacity: .35; pointer-events: none; }
+.chapter-title-inner { width: min(90%,1200px); margin: auto; min-height: 285px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; padding-block: 34px; }
+.chapter-title-kicker { font: 500 12px/1.8 var(--bd-mono); letter-spacing: .13em; color: var(--title-copy); margin: 0 0 20px; }
+.chapter-title-copy h1 { font: 800 clamp(30px,3.5vw,47px)/1.4 var(--bd-heading); letter-spacing: -.035em; margin: 0 0 10px; color: var(--title-copy); }
+.chapter-title-description { color: var(--title-copy); font: 400 14px/1.8 var(--bd-sans); margin: 0; }
+.chapter-title-lettering { padding: 8px 12px 14px; transform: rotate(-4deg); }
+.chapter-title-lettering span,.chapter-title-lettering strong { display: block; font: italic 800 clamp(64px,7.5vw,110px)/.88 var(--bd-display); color: var(--title-copy); letter-spacing: -.025em; white-space: nowrap; }
+.chapter-title-lettering strong { margin-top: .06em; color: var(--title-accent); text-shadow: 3px 3px 0 var(--comic-red),5px 5px 0 var(--comic-ink); }
+.chapter-title-card--books { --title-surface: #323f72; }
+.chapter-title-card--about { --title-surface: var(--comic-red); --title-copy: var(--comic-ink); --title-accent: var(--comic-paper); }
+.chapter-title-card--about .chapter-title-lettering { transform: rotate(3deg); }
+.chapter-title-card--about .chapter-title-lettering strong { text-shadow: 3px 3px 0 var(--comic-ink); }
+.chapter-title-card--now .chapter-title-lettering { transform: rotate(-7deg); }
+.chapter-title-card--contact { --title-surface: var(--comic-yellow); --title-copy: var(--comic-ink); --title-accent: var(--comic-paper); }
+.chapter-title-card--guestbook { --title-surface: #35304e; --title-accent: #bac9ff; }
+
+@media(max-width:760px) {
+  .chapter-cover { width: 92%; margin-top: 20px; box-shadow: 3px 3px 0 var(--comic-ink); }
+  .chapter-cover-rail { padding: 10px 14px; letter-spacing: .06em; }
+  .chapter-cover-rail span:last-child { display: none; }
+  .chapter-cover-scene,.chapter-cover--travel .chapter-cover-scene { min-height: 460px; align-items: flex-end; }
+  .chapter-cover .chapter-cover-art { object-position: 82% center; }
+  .chapter-cover-scene::after { background: linear-gradient(0deg,#171228f5 0%,#211c3860 52%,#211c3800 80%); }
+  .chapter-cover-lettering { width: 100%; padding: 150px 7% 85px; }
+  .chapter-cover-lettering span,.chapter-cover-lettering strong { font-size: clamp(66px,17vw,118px); }
+  .chapter-cover--notes .chapter-cover-lettering strong { font-size: clamp(60px,15.3vw,108px); }
+  .chapter-cover--travel .chapter-cover-lettering span { font-size: clamp(82px,20vw,135px); }
+  .chapter-cover-caption { right: 20px; bottom: 23px; font-size: 12px; }
+  .chapter-cover-footer { padding: 21px 20px; gap: 8px; }
+  .chapter-cover-footer p { font-size: 14px; }
+  .chapter-title-inner { grid-template-columns: 1fr; gap: 24px; padding-block: 29px 34px; min-height: 0; }
+  .chapter-title-kicker { margin-bottom: 13px; }
+  .chapter-title-lettering { justify-self: end; padding-right: 14px; }
+  .chapter-title-lettering span,.chapter-title-lettering strong { font-size: clamp(59px,15vw,94px); }
+}
+@media(prefers-contrast:more) { .chapter-cover-lettering { text-shadow: 2px 2px 0 #000; } }

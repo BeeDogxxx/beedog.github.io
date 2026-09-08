@@ -2,7 +2,7 @@
 from pathlib import Path
 import re
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '20260908-scroll-panels'
+VERSION = '20260908-chapter-covers'
 ROUTES = [('index.html','首页'),('portfolio.html','作品'),('blog.html','博客'),('books.html','书架'),('travel.html','旅行'),('about.html','关于我')]
 MORE = [('now.html','NOW · 此刻'),('game.html','小游戏'),('guestbook.html','留言板')]
 
