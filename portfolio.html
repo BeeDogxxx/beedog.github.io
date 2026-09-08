@@ -3,283 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="作品集 - 苏笔辉的项目展示">
-    <title>作品集 - 蜜蜂狗BeeDog的说明书</title>
+    <meta name="description" content="作品集 - 苏笔辉的 Agent 评测与数据实践">
+    <title>作品与实践 · 苏笔辉 BeeDog</title>
     <link rel="stylesheet" href="css/style.css?v=20260709">
     <link rel="stylesheet" href="css/pixel-extras.css">
     <link rel="stylesheet" href="css/portfolio.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/outpost.css?v=20260908-resume">
+    <link rel="stylesheet" href="css/site-system.css?v=20260908-ace-cycle">
+    <script src="js/site-shell.js?v=20260908-ace-cycle" defer></script>
 </head>
-<body>
+<body class="interior-page">
     <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="index.html">
-                    <span class="brand-icon">🐝</span>
-                    <span class="brand-text">BeeDog</span>
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="about.html">关于我</a></li>
-                <li><a href="portfolio.html" class="active">作品集</a></li>
-                <li><a href="blog.html">博客</a></li>
-                <li><a href="books.html">最近在看的书</a></li>
-                <li><a href="travel.html">我去过的地方</a></li>
-                <li><a href="now.html">NOW</a></li>
-                <li><a href="game.html">🎮</a></li>
-                <li><a href="guestbook.html">留言板</a></li>
-                <li><a href="contact.html">联系方式</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- SITE HEADER -->
+<header class="site-header"><div class="site-bar">
+  <a class="site-brand" href="index.html" aria-label="BeeDog 首页"><span class="site-monogram" aria-hidden="true">B<span>·</span></span><span class="site-brand-name">BeeDog<small>STAY CURIOUS / KEEP GOING</small></span></a>
+  <nav class="site-nav" id="site-navigation" aria-label="主导航"><a href="index.html">首页</a><a href="portfolio.html" aria-current="page">作品</a><a href="blog.html">博客</a><a href="books.html">书架</a><a href="travel.html">旅行</a><a href="about.html">关于我</a><details class="site-more"><summary>更多 <span aria-hidden="true">＋</span></summary><div class="site-more-menu"><a href="now.html">NOW · 此刻</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a></div></details></nav>
+  <div class="site-header-actions"><a class="site-contact" href="contact.html">建立联系 <span aria-hidden="true">↗</span></a><button class="site-menu-toggle" id="site-menu-toggle" aria-label="打开导航" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button></div>
+</div></header>
+<!-- /SITE HEADER -->
 
     <!-- 页面标题 -->
-    <section class="page-header">
+    <section class="page-header portfolio-cover">
         <div class="container">
-            <h1 class="page-title">作品集</h1>
-            <p class="page-subtitle">Portfolio</p>
-            <p class="page-description">我的项目实战经验与成果展示</p>
+            <h1 class="page-title">想法，要有下文。</h1>
+            <p class="page-subtitle">SELECTED WORK / 2023 — 2026</p>
+            <p class="page-description">Agent 评测 · Skill 优化 · 训练数据与业务实践</p>
         </div>
     </section>
 
-    <!-- 重点项目展示 -->
-    <section class="projects-section">
-        <div class="container">
-            <h2 class="section-title">核心项目</h2>
-            
-            <!-- 项目1：快手电商运营项目 -->
-            <div class="project-detail">
-                <div class="project-header">
-                    <div class="project-icon">🎬</div>
-                    <div class="project-info">
-                        <h3 class="project-title">快手电商运营项目</h3>
-                        <p class="project-company">快手电商 · 木作文玩 · 行业运营实习生</p>
-                        <p class="project-time">2023.11 - 2025.01</p>
-                    </div>
-                    <div class="project-badge">精选</div>
-                </div>
-                
-                <div class="project-content">
-                    <div class="project-description">
-                        <p>在快手电商木作文玩品类担任行业运营实习生，负责商家运营、品类治理、商达撮合等工作，通过精细化运营策略，推动类目GMV大幅提升。</p>
-                    </div>
-                    
-                    <div class="project-achievements">
-                        <h4>主要成果</h4>
-                        <div class="achievement-grid">
-                            <div class="achievement-item">
-                                <div class="achievement-number">百万</div>
-                                <div class="achievement-label">打造多个百万单品</div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-number">-50%</div>
-                                <div class="achievement-label">品退率下降<br><small>1.8% → 0.9%</small></div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-number">+40%</div>
-                                <div class="achievement-label">GMV提升</div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-number">TOP2</div>
-                                <div class="achievement-label">行业排名</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-tasks">
-                        <h4>核心工作</h4>
-                        <div class="task-list">
-                            <div class="task-item">
-                                <div class="task-icon">🎯</div>
-                                <div class="task-content">
-                                    <h5>商家运营</h5>
-                                    <p>分析达人画像与货主资源，促成多个头部商达合作，打造多个百万单品；指导商家构建强人设场景，助力冷启动3个月跻身行业TOP2</p>
-                                </div>
-                            </div>
-                            <div class="task-item">
-                                <div class="task-icon">🛡️</div>
-                                <div class="task-content">
-                                    <h5>治理优化</h5>
-                                    <p>专项打击"虚假机芯""假防水"等违规行为，引入报关单展示等标准化流程，推动类目品退率下降50%</p>
-                                </div>
-                            </div>
-                            <div class="task-item">
-                                <div class="task-icon">🤝</div>
-                                <div class="task-content">
-                                    <h5>商达撮合</h5>
-                                    <p>基于达人粉丝画像匹配优质木作饰品商家，成功建联徐小米、小伊伊等头部达人，推动大鸭梨专场达成饰品类目百万GMV</p>
-                                </div>
-                            </div>
-                            <div class="task-item">
-                                <div class="task-icon">⚖️</div>
-                                <div class="task-content">
-                                    <h5>品类治理</h5>
-                                    <p>严打黑灰商家错挂类目行为，累计封禁违规店铺50+，优化平台生态</p>
-                                </div>
-                            </div>
-                            <div class="task-item">
-                                <div class="task-icon">📈</div>
-                                <div class="task-content">
-                                    <h5>货架场域增长</h5>
-                                    <p>通过商城招商及补贴策略，实现货架动销商品数同比+20%，GMV提升40%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <main class="projects-section resume-portfolio">
+      <div class="container">
+        <nav class="project-index" aria-label="项目快速导航"><a href="#ace">01 ACE 评测</a><a href="#skill">02 Skill 优化</a><a href="#customer-agent">03 客服 Agent</a><a href="#multimodal-eval">04 图文评测</a><a href="#speech-quality">05 语音质检</a><a href="#multimodal-training">06 多模态数据</a><a href="#commerce">07 电商运营</a></nav>
+        <div class="portfolio-heading"><p class="portfolio-kicker">07 PROJECTS / 从业务出发</p><h2>从业务问题，到可执行的评测与迭代。</h2><p>重点展示 Agent 评测、Skill 优化和数据质量实践，以及各项目中我负责的部分。</p></div>
+    <article class="project-detail resume-project feature-case" id="ace">
+      <div class="project-header"><span class="project-sequence">01</span><div class="project-info"><h3>ACE 自动评测归因系统建设</h3><p class="project-company">腾讯（子公司编制） · 大模型评测项目管理</p><p class="project-time">2026.05 — 至今</p></div><span class="project-badge">Agent 评测</span></div>
+      <div class="case-opening"><div class="case-opening-copy"><span>CASE STUDY / 01</span><h2>让每一次反馈，<br>进入下一次迭代。</h2><p>ACE 自动评测归因</p></div><div class="case-cycle" role="group" aria-label="ACE 评测迭代流程">
+          <p class="cycle-source"><span>输入 / 现网对话</span><span aria-hidden="true">↘</span></p>
+          <ol class="cycle-steps">
+            <li><span class="cycle-number">01</span><strong>标注与评测</strong><small>按标准判断表现</small></li>
+            <li><span class="cycle-number">02</span><strong>问题归因</strong><small>定位失败原因</small></li>
+            <li><span class="cycle-number">03</span><strong>策略更新</strong><small>沉淀到 Playbook</small></li>
+            <li><span class="cycle-number">04</span><strong>复测回归</strong><small>验证调整效果</small></li>
+          </ol>
+          <p class="cycle-return"><span aria-hidden="true">↺</span> 持续反馈，进入下一轮评测</p>
+        </div></div>
+      <div class="project-content"><div class="project-description"><p>深度参与 ACE（Agentic Context Engineering）系统建设，让现网对话中的成功经验与失败问题进入评测、归因和策略更新流程，支持 Skill 与 Prompt 持续迭代。</p></div>
+        <p class="contribution"><strong>我的职责</strong>负责评测 Agent 主提示词与标注 Agent 提示词的整体设计和调优；参与全链路编排，协助上线、运维与跨团队整改。</p>
+        <div class="achievement-grid"><div class="achievement-item"><div class="achievement-number">37 个</div><div class="achievement-label">系统支撑的 Agent</div></div><div class="achievement-item"><div class="achievement-number">500+ 个</div><div class="achievement-label">系统支撑的 Skill</div></div></div>
+        <div class="task-list"><div class="task-item"><div class="task-content"><h4>把维度变成可执行标准</h4><p>围绕任务完成、能力调用、回复质量和异常处理，结构化评测标准，用具体 case 定义判定边界。</p></div></div><div class="task-item"><div class="task-content"><h4>把评测接到迭代流程</h4><p>参与搭建“现网对话 → 自动标注 / 评测 → Bad Case 归因 → Playbook 增量更新 → 复测回归”的编排。</p></div></div><div class="task-item"><div class="task-content"><h4>跟进上线与问题闭环</h4><p>跟进评测稳定性和异常处理，基于评测结论定位线上问题，联动算法、运营团队推进整改。</p></div></div></div>
+        <p class="project-outcome"><strong>项目结果</strong>系统支持多 Agent、多 Skill 的持续评测与自迭代，将原先依赖人工的标注评测流程自动化。以上覆盖规模属于系统成果。</p>
+        <div class="skill-tags"><span class="skill-tag">评测标准</span><span class="skill-tag">Prompt</span><span class="skill-tag">Bad Case</span><span class="skill-tag">Playbook</span><span class="skill-tag">项目协作</span></div></div>
+    </article>
+    <article class="project-detail resume-project" id="skill">
+      <div class="project-header"><span class="project-sequence">02</span><div class="project-info"><h3>智能客服 Skill 建设与优化</h3><p class="project-company">腾讯（子公司编制） · 大模型评测项目管理</p><p class="project-time">2026.05 — 至今</p></div><span class="project-badge">Skill 优化</span></div>
+      <div class="project-content"><div class="project-description"><p>基于海量工单、现网真实对话与已有知识库，抽象高频意图和任务流程，主导设计 Skill 框架并组织撰写、持续运维。</p></div>
+        <p class="contribution"><strong>我的职责</strong>主导 Skill 框架设计；负责结构优化、知识运维和工具调用规范，结合线上反馈推进回归验证。</p>
+        <div class="achievement-grid"><div class="achievement-item"><div class="achievement-number">5% 以上 → 约 2%</div><div class="achievement-label">现网喊人工率变化</div></div><div class="achievement-item"><div class="achievement-number">超 60%</div><div class="achievement-label">现网喊人工率降幅</div></div></div>
+        <div class="task-list"><div class="task-item"><div class="task-content"><h4>把业务流程沉淀为 Skill</h4><p>梳理高频意图与任务步骤，沉淀可复用 Skill，并持续调整结构、知识挂载和工具调用规范。</p></div></div><div class="task-item"><div class="task-content"><h4>用工具支持存量知识运维</h4><p>借助 MCP 连接器与 AI 工具，批量完成存量文档合规检查，支持知识维护。</p></div></div><div class="task-item"><div class="task-content"><h4>从失败场景回到结构优化</h4><p>结合线上反馈与转人工数据定位高频失败场景，针对性调整 Skill 结构与知识挂载，再复测验证。</p></div></div></div>
+        <p class="project-outcome"><strong>项目结果</strong>Agent + Skill 智能客服系统在王者荣耀、三角洲等游戏业务稳定运行。喊人工率为现网系统指标，个人职责如上所列。</p>
+        <div class="skill-tags"><span class="skill-tag">Skill 框架</span><span class="skill-tag">知识运维</span><span class="skill-tag">MCP</span><span class="skill-tag">失败归因</span><span class="skill-tag">回归验证</span></div></div>
+    </article>
+    <article class="project-detail resume-project" id="customer-agent">
+      <div class="project-header"><span class="project-sequence">03</span><div class="project-info"><h3>电商客服 Agent 迭代与数据体系</h3><p class="project-company">认养一头牛 · AI 产品策划（管培生）</p><p class="project-time">2025.02 — 2026.03</p></div><span class="project-badge">数据与迭代</span></div>
+      <div class="project-content"><div class="project-description"><p>围绕天猫、京东渠道的高频复杂咨询，从 0 到 1 构建客服训练数据体系，持续优化商品推荐、售后引导等任务的表现。</p></div>
+        <p class="contribution"><strong>我的职责</strong>主导编写标注规范，组织结构化 QA 数据生产与提示词设计；独立使用 Python、SQL 提取分析咨询数据。</p>
+        <div class="achievement-grid"><div class="achievement-item"><div class="achievement-number">18%</div><div class="achievement-label">高价值场景首次解决率提升</div></div><div class="achievement-item"><div class="achievement-number">24.1%</div><div class="achievement-label">异常场景处理效率提升</div></div></div>
+        <div class="task-list"><div class="task-item"><div class="task-content"><h4>规范与提示词设计</h4><p>明确正负例边界及质检流程，组织团队产出结构化 QA 对支持 SFT 微调；针对核心任务设计多轮对话 Prompt，开展指令策略对比评测。</p></div></div><div class="task-item"><div class="task-content"><h4>Bad Case 分析</h4><p>用 Python、SQL 提取咨询时长、负面情绪关键词等行为数据，建立 Bad Case 分类标签，分析 Agent 边缘场景失效模式。</p></div></div><div class="task-item"><div class="task-content"><h4>协作验证</h4><p>定期输出智能客服效能报告，与算法工程师建立“问题 → 优化 → 验证”的协作闭环。</p></div></div></div>
+        <p class="project-outcome"><strong>项目结果</strong>项目改善了关键意图识别、高价值场景首次解决及异常处理表现。首次解决率与异常处理效率保留各自的场景范围。</p>
+        <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">标注规范</span><span class="skill-tag">SFT 数据</span><span class="skill-tag">Prompt</span></div></div>
+    </article>
+    <article class="project-detail resume-project" id="multimodal-eval">
+      <div class="project-header"><span class="project-sequence">04</span><div class="project-info"><h3>多模态内容理解评测</h3><p class="project-company">认养一头牛 · AI 产品策划（管培生）</p><p class="project-time">2025.02 — 2026.03</p></div><span class="project-badge">图文评测</span></div>
+      <div class="project-content"><p class="compact-intro">针对商品主图、促销 Banner 等复杂图文内容，建立人工评测标准，帮助算法团队定位识别与抽取短板。</p><details class="project-expand"><summary>展开职责、方法与结果 <span>＋</span></summary><div class="expanded-content"><div class="project-description"><p>针对商品主图、促销 Banner 等复杂图文内容，建立人工评测标准，帮助算法团队定位识别与抽取短板。</p></div>
+        <p class="contribution"><strong>我的职责</strong>设计评测维度，执行图片质量打分并输出评测报告。</p>
+        <div class="achievement-grid"><div class="achievement-item"><div class="achievement-number">150+ 张</div><div class="achievement-label">完成打分与评估的图片</div></div><div class="achievement-item"><div class="achievement-number">3 个维度</div><div class="achievement-label">图文一致性 · 信息完整度 · 合规性</div></div></div>
+        <div class="task-list"><div class="task-item"><div class="task-content"><h4>建立评测标准</h4><p>围绕图文一致性、信息完整度与合规性定义人工评测标准，检查模型的识别和抽取表现。</p></div></div><div class="task-item"><div class="task-content"><h4>执行与反馈</h4><p>完成图片质量评估，整理问题并形成评测报告，为算法定向优化提供依据。</p></div></div></div>
+        <p class="project-outcome"><strong>项目结果</strong>评测结论用于指导多模态模型在电商图文场景中的迭代。</p>
+        <div class="skill-tags"><span class="skill-tag">多模态评测</span><span class="skill-tag">人工评测</span><span class="skill-tag">质量打分</span><span class="skill-tag">评测报告</span></div></div></details></div>
+    </article>
+    <article class="project-detail resume-project" id="speech-quality">
+      <div class="project-header"><span class="project-sequence">05</span><div class="project-info"><h3>客服语音标注与质检</h3><p class="project-company">认养一头牛 · AI 产品策划（管培生）</p><p class="project-time">2025.02 — 2026.03</p></div><span class="project-badge">语音数据</span></div>
+      <div class="project-content"><p class="compact-intro">围绕方言口音、噪声、异常语速等客服语音边缘场景，建立语音转写与语义一致性评估流程。</p><details class="project-expand"><summary>展开职责、方法与结果 <span>＋</span></summary><div class="expanded-content"><div class="project-description"><p>围绕方言口音、噪声、异常语速等客服语音边缘场景，建立语音转写与语义一致性评估流程。</p></div>
+        <p class="contribution"><strong>我的职责</strong>制定分级处理与质检规则，维护 Bad Case 库、专有名词词库，推动标注一致性对齐。</p>
+        <div class="achievement-grid"><div class="achievement-item"><div class="achievement-number">90%+</div><div class="achievement-label">标注数据准确率长期保持</div></div></div>
+        <div class="task-list"><div class="task-item"><div class="task-content"><h4>分层处理复杂语音</h4><p>以真实客服通话为主，补充低频场景；按可听清程度与意图可辨识程度区分转写、不确定标记和剔除。</p></div></div><div class="task-item"><div class="task-content"><h4>用错误案例对齐标准</h4><p>沉淀同音字、否定词、专有名词、语义书面化改写等 Bad Case；要求保留原始表达风格，避免转写改变语义。</p></div></div><div class="task-item"><div class="task-content"><h4>分层抽检与再校准</h4><p>普通音频与方言、噪声、不确定样本采用不同抽检比例；针对断句分歧补充音频示例重新对齐。</p></div></div></div>
+        <p class="project-outcome"><strong>项目结果</strong>标注数据准确率长期保持在 90% 以上，并支持降低系统 ASR 误识别。该准确率对应标注数据质量。</p>
+        <div class="skill-tags"><span class="skill-tag">语音标注</span><span class="skill-tag">ASR 质检</span><span class="skill-tag">规则设计</span><span class="skill-tag">一致性对齐</span></div></div></details></div>
+    </article>
+    <article class="project-detail resume-project" id="multimodal-training">
+      <div class="project-header"><span class="project-sequence">06</span><div class="project-info"><h3>电商知识库与直播切片标注</h3><p class="project-company">快手多模态（可灵） · 多模态数据训练实习生</p><p class="project-time">2024.06 — 2025.01</p></div><span class="project-badge">多模态数据</span></div>
+      <div class="project-content"><p class="compact-intro">参与电商文本 QA 及直播视频切片的标注与质检，围绕平台合规、讲品话术和主播动作风格，执行批次质量检查。</p><details class="project-expand"><summary>展开职责、方法与结果 <span>＋</span></summary><div class="expanded-content"><div class="project-description"><p>参与电商文本 QA 及直播视频切片的标注与质检，围绕平台合规、讲品话术和主播动作风格，执行批次质量检查。</p></div>
+        <p class="contribution"><strong>我的职责</strong>负责电商知识库文本 QA 标注与质检；参与直播切片标注，辅助规范讨论和边界案例梳理。</p>
 
-            <!-- 项目2：AI客服训练数据体系 -->
-            <div class="project-detail">
-                <div class="project-header">
-                    <div class="project-icon">🤖</div>
-                    <div class="project-info">
-                        <h3 class="project-title">AI客服训练数据体系</h3>
-                        <p class="project-company">某独角兽乳企 · 液奶事业部 · 电商策略运营</p>
-                        <p class="project-time">2025.02 - 2026.03</p>
-                    </div>
-                    <div class="project-badge">精选</div>
-                </div>
-                
-                <div class="project-content">
-                    <div class="project-description">
-                        <p>作为业务侧唯一代表，主导乳制品大模型客服系统的训练数据体系建设，通过构建结构化QA对、设计Prompt工程、建立Bad Case数据飞轮，推动AI客服能力大幅提升。</p>
-                    </div>
-                    
-                    <div class="project-achievements">
-                        <h4>主要成果</h4>
-                        <div class="achievement-grid">
-                            <div class="achievement-item">
-                                <div class="achievement-number">+21.2%</div>
-                                <div class="achievement-label">关键意图识别准确率提升</div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-number">93%</div>
-                                <div class="achievement-label">用户满意度</div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-number">+18%</div>
-                                <div class="achievement-label">首次解决率提升</div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-number">+25%</div>
-                                <div class="achievement-label">异常场景处理效率提升</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-tasks">
-                        <h4>核心工作</h4>
-                        <div class="task-list">
-                            <div class="task-item">
-                                <div class="task-icon">🤖</div>
-                                <div class="task-content">
-                                    <h5>构建垂直领域AI训练数据体系</h5>
-                                    <p>梳理天猫/京东高频咨询场景，制定《智能客服标注规范》，组织团队协同产出结构化QA对800+组，支撑模型SFT微调</p>
-                                </div>
-                            </div>
-                            <div class="task-item">
-                                <div class="task-icon">💡</div>
-                                <div class="task-content">
-                                    <h5>主导Prompt工程与效果评估闭环</h5>
-                                    <p>针对核心任务设计多轮对话Prompt模板，通过A/B测试验证策略，建立"问题→优化→验证"迭代流程</p>
-                                </div>
-                            </div>
-                            <div class="task-item">
-                                <div class="task-icon">🔄</div>
-                                <div class="task-content">
-                                    <h5>构建Bad Case数据飞轮驱动Agent迭代</h5>
-                                    <p>从日常客诉文本沉淀bad case并构建分类标签体系，使用SQL提取用户行为数据分析Agent失效模式</p>
-                                </div>
-                            </div>
-                            <div class="task-item">
-                                <div class="task-icon">🚀</div>
-                                <div class="task-content">
-                                    <h5>探索AIGC Agent赋能运营提效</h5>
-                                    <p>试点内部AIGC Agent自动生成商详页卖点文案，内容采纳率64.8%，节省文案工时近30%；推动三级协同流程落地，客服人效提升17%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-skills">
-                        <h4>使用技能</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">AI Agent</span>
-                            <span class="skill-tag">Prompt工程</span>
-                            <span class="skill-tag">数据标注</span>
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">A/B测试</span>
-                            <span class="skill-tag">产品优化</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 其他项目 -->
-    <section class="other-projects">
-        <div class="container">
-            <h2 class="section-title">其他经历</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">🥽</div>
-                    <h3 class="project-title">AR游戏体验实习</h3>
-                    <p class="project-company">Rokid（杭州灵伴科技）</p>
-                    <p class="project-description">深度参与AR眼镜游戏场景的产品体验工作，完成多份专业测评报告，为产品优化提供真实用户视角的参考依据</p>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">📱</div>
-                    <h3 class="project-title">B站自媒体运营</h3>
-                    <p class="project-company">个人项目</p>
-                    <p class="project-description">运营B站自媒体账号，介绍电子游戏折扣等信息，账号建立首月涨粉1500+</p>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">🎓</div>
-                    <h3 class="project-title">杭师大竞赛通</h3>
-                    <p class="project-company">杭师大阿里巴巴商学院外联部</p>
-                    <p class="project-description">负责校内竞赛信息集合平台的群内拉新工作，目前有千人大群3个，五百人群1个</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <div class="task-list"><div class="task-item"><div class="task-content"><h4>文本 QA 质检</h4><p>围绕商品描述、用户评论及对应标准话术，检查平台合规性与讲品话术，维护批次一致性。</p></div></div><div class="task-item"><div class="task-content"><h4>直播切片标注</h4><p>识别并标记直播话术与动作风格，结合转化引导、情绪感染力及合规要求进行判定。</p></div></div><div class="task-item"><div class="task-content"><h4>边界案例对齐</h4><p>协助完善正负例判定标准，执行质检流程，保证批次数据的一致性与准确率。</p></div></div></div>
+        <p class="project-outcome"><strong>项目结果</strong>参与数据标注、规范辅助与质量执行，支持多模态数据生产。</p>
+        <div class="skill-tags"><span class="skill-tag">文本 QA</span><span class="skill-tag">视频标注</span><span class="skill-tag">平台合规</span><span class="skill-tag">批次质检</span></div></div></details></div>
+    </article>
+    <article class="project-detail resume-project" id="commerce">
+      <div class="project-header"><span class="project-sequence">07</span><div class="project-info"><h3>木作文玩与手表类目运营治理</h3><p class="project-company">快手电商 · 行业运营实习生</p><p class="project-time">2023.11 — 2024.07</p></div><span class="project-badge">业务运营</span></div>
+      <div class="project-content"><p class="compact-intro">参与商家分层、商达匹配、违规治理和货架场域增长，用业务数据与平台工具辅助运营决策。</p><details class="project-expand"><summary>展开职责、方法与结果 <span>＋</span></summary><div class="expanded-content"><div class="project-description"><p>参与商家分层、商达匹配、违规治理和货架场域增长，用业务数据与平台工具辅助运营决策。</p></div>
+        <p class="contribution"><strong>我的职责</strong>负责类目商家运营与违规治理，参与商达匹配及冷启动支持。</p>
+        <div class="achievement-grid"><div class="achievement-item"><div class="achievement-number">1.8% → 0.9%</div><div class="achievement-label">类目品退率</div></div><div class="achievement-item"><div class="achievement-number">20%</div><div class="achievement-label">货架动销商品数同比增长</div></div><div class="achievement-item"><div class="achievement-number">40%</div><div class="achievement-label">GMV 提升</div></div></div>
+        <div class="task-list"><div class="task-item"><div class="task-content"><h4>商家分层与商达匹配</h4><p>按 GMV 分层跟进商家，结合达人标签与粉丝画像筛选合作对象，推动大鸭梨专场达成饰品类目百万 GMV，支持商家冷启动。</p></div></div><div class="task-item"><div class="task-content"><h4>违规治理</h4><p>治理虚假机芯、假防水、类目错挂等问题，建立违规特征标签，引入报关单展示等标准化流程，累计封禁违规店铺 50+。</p></div></div></div>
+        <p class="project-outcome"><strong>项目结果</strong>项目推动品退率下降 50%，并实现货架动销与 GMV 增长。数据对应所参与的类目运营成果。</p>
+        <div class="skill-tags"><span class="skill-tag">商家分层</span><span class="skill-tag">商达匹配</span><span class="skill-tag">类目治理</span><span class="skill-tag">数据分析</span></div></div></details></div>
+    </article>
+      </div>
+    </main>
 
     <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="brand-icon">🐝</span>
-                    <span class="brand-text">BeeDog</span>
-                </div>
-                <p class="footer-description">蜜蜂狗BeeDog的说明书 - 探索AI与电商的无限可能</p>
-                <div class="footer-links">
-                    <a href="index.html">首页</a>
-                    <a href="about.html">关于我</a>
-                    <a href="portfolio.html">作品集</a>
-                    <a href="blog.html">博客</a>
-                    <a href="books.html">书架</a>
-                    <a href="travel.html">我去过的地方</a>
-                    <a href="now.html">NOW</a>
-                    <a href="game.html">小游戏</a>
-                    <a href="guestbook.html">留言板</a>
-                    <a href="contact.html">联系方式</a>
-                </div>
-                <p class="footer-copyright">© 2025 苏笔辉. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+
 
     <script src="js/main.js"></script>
+<!-- SITE FOOTER -->
+<footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-identity"><a href="index.html">BeeDog <span>＋</span></a><span>© 2026 苏笔辉</span></div><nav class="site-footer-links" aria-label="页脚导航"><a href="now.html">NOW</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a><a href="contact.html">联系我</a></nav><button class="site-motion" id="motion-toggle" aria-pressed="false">动态效果 <span id="motion-label">开启</span><i aria-hidden="true"></i></button></div></footer>
+<!-- /SITE FOOTER -->
 </body>
 </html>

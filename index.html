@@ -1,201 +1,77 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="蜜蜂狗BeeDog的说明书 - 苏笔辉的个人博客 · 像素游戏风·AI与电商探索">
-    <meta name="theme-color" content="#FFD23F">
-    <title>🐝 BeeDog · PRESS START</title>
-    <link rel="stylesheet" href="css/style.css?v=20260709">
-    <link rel="stylesheet" href="css/effects.css?v=20260709">
-    <link rel="stylesheet" href="css/pixel-extras.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="我是苏笔辉，从事大模型评测项目管理。探索我的 ACE 评测、Skill 优化、训练数据与业务实践，以及阅读、写作和旅行。">
+  <meta name="theme-color" content="#211c38">
+  <title>BeeDog · 苏笔辉 · 再试一次</title>
+  <link rel="stylesheet" href="css/comic-home.css?v=20260908-comic">
+  <script src="js/world.js?v=20260908-comic" defer></script>
+    <link rel="stylesheet" href="css/site-system.css?v=20260908-ace-cycle">
+    <script src="js/site-shell.js?v=20260908-ace-cycle" defer></script>
 </head>
-<body>
-    <!-- 右上角得分板 HUD -->
-    <div class="score-hud" id="scoreHud" title="每次点击+1 EXP · 累计到100触发彩蛋">
-        <span class="score-bee">🐝</span>
-        <span class="score-label">SCORE</span>
-        <span class="score-value" id="scoreValue">0000</span>
+<body class="world-page">
+  <a class="skip-link" href="#world-nav">跳到探索区域</a>
+  <div class="universe" id="universe">
+    <!-- SITE HEADER -->
+<header class="site-header"><div class="site-bar">
+  <a class="site-brand" href="index.html" aria-label="BeeDog 首页"><span class="site-monogram" aria-hidden="true">B<span>·</span></span><span class="site-brand-name">BeeDog<small>STAY CURIOUS / KEEP GOING</small></span></a>
+  <nav class="site-nav" id="site-navigation" aria-label="主导航"><a href="index.html" aria-current="page">首页</a><a href="portfolio.html">作品</a><a href="blog.html">博客</a><a href="books.html">书架</a><a href="travel.html">旅行</a><a href="about.html">关于我</a><details class="site-more"><summary>更多 <span aria-hidden="true">＋</span></summary><div class="site-more-menu"><a href="now.html">NOW · 此刻</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a></div></details></nav>
+  <div class="site-header-actions"><a class="site-contact" href="contact.html">建立联系 <span aria-hidden="true">↗</span></a><button class="site-menu-toggle" id="site-menu-toggle" aria-label="打开导航" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button></div>
+</div></header>
+<!-- /SITE HEADER -->
+    <main class="comic-home">
+      <section class="comic-cover" aria-labelledby="hero-title">
+        <div class="cover-topline"><span>BEEDOG / 苏笔辉的个人作品集</span><span>VOL. 01 — 2026</span></div>
+        <div class="cover-scene">
+          <div class="cover-copy">
+            <p class="cover-kicker">STAY CURIOUS. KEEP GOING.</p>
+            <h1 id="hero-title">ONE<br><span>MORE.</span></h1>
+            <p class="cover-manifesto">保持好奇，再试一次。</p>
+          </div>
+          <div class="cover-art"><img src="images/comic/one-more.jpg" width="1536" height="1024" alt="原创漫画插画：红衣创作者俯身操作电脑，金黄色能量线沿着动作划过。" fetchpriority="high"></div>
+          <span class="cover-stamp" aria-hidden="true">好奇心<br>持续在线 ↗</span>
+          <div class="cover-caption"><span>01 / THE NEXT CHAPTER</span><span>故事还在继续。</span></div>
+        </div>
+        <div class="cover-footnote">
+          <div><p class="cover-name">我是苏笔辉，<span>也叫 BeeDog。</span></p><p>从电商运营，走到大模型评测。<br>在 Agent、Skill 与数据质量之间，寻找让产品更好用的方法。</p></div>
+          <a class="comic-cta" href="portfolio.html">看我的项目 <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+      <section class="comic-chapters" id="world-nav" aria-labelledby="dock-title">
+        <div class="chapter-heading"><h2 id="dock-title">翻到下一页 <span>CHOOSE A CHAPTER</span></h2><p>已探索 <b id="explored-count">0</b> / 4 <span class="progress-ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span></p></div>
+        <div class="chapter-grid">
+          <button class="destination chapter-work" data-zone="lab" aria-haspopup="dialog"><span class="chapter-meta">01 / WORK</span><strong>把想法<br>做出来。</strong><span class="chapter-bottom">Agent 评测 · Skill · 数据 <b aria-hidden="true">↗</b></span></button>
+          <button class="destination chapter-notes" data-zone="log" aria-haspopup="dialog"><span class="chapter-meta">02 / JOURNAL</span><strong>写下<br>那些想法。</strong><span class="chapter-bottom">写作 · 思考 · 阅读 <b aria-hidden="true">↗</b></span></button>
+          <button class="destination chapter-life" data-zone="life" aria-haspopup="dialog"><span class="chapter-meta">03 / OFFLINE</span><strong>屏幕外，<br>也精彩。</strong><span class="chapter-bottom">旅行 · 游戏 · 留言 <b aria-hidden="true">↗</b></span></button>
+          <button class="destination chapter-about" data-zone="about" aria-haspopup="dialog"><span class="chapter-meta">04 / ABOUT</span><strong>认识<br>这个人。</strong><span class="chapter-bottom">经历 · 近况 · 联系 <b aria-hidden="true">↗</b></span></button>
+        </div>
+      </section>
+    </main>
+    <!-- SITE FOOTER -->
+<footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-identity"><a href="index.html">BeeDog <span>＋</span></a><span>© 2026 苏笔辉</span></div><nav class="site-footer-links" aria-label="页脚导航"><a href="now.html">NOW</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a><a href="contact.html">联系我</a></nav><button class="site-motion" id="motion-toggle" aria-pressed="false">动态效果 <span id="motion-label">开启</span><i aria-hidden="true"></i></button></div></footer>
+<!-- /SITE FOOTER -->
+  </div>
+  <dialog class="zone-dialog" id="zone-dialog" aria-labelledby="zone-title">
+    <div class="dialog-top">
+      <span class="console-brand"><span class="console-cross" aria-hidden="true">＋</span> BEEDOG <span class="console-slash">/</span> CHAPTERS</span>
+      <button class="dialog-close" aria-label="关闭章节目录">关闭 <kbd>ESC</kbd><span aria-hidden="true">×</span></button>
     </div>
-
-    <!-- 跟随鼠标的蜜蜂 -->
-    <div class="bee-cursor" id="beeCursor" aria-hidden="true">🐝</div>
-
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="index.html">
-                    <span class="brand-icon">🐝</span>
-                    <span class="brand-text">BeeDog</span>
-                </a>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="active">首页</a></li>
-                <li><a href="about.html">关于我</a></li>
-                <li><a href="portfolio.html">作品集</a></li>
-                <li><a href="blog.html">博客</a></li>
-                <li><a href="books.html">最近在看的书</a></li>
-                <li><a href="travel.html">我去过的地方</a></li>
-                <li><a href="now.html">NOW</a></li>
-                <li><a href="game.html">🎮</a></li>
-                <li><a href="guestbook.html">留言板</a></li>
-                <li><a href="contact.html">联系方式</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger" aria-label="菜单">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero 区 — 游戏开始画面 -->
-    <section class="hero hero-pixel">
-        <!-- 纯像素背景：星空 + 蜂巢 + 扫描线 -->
-        <div class="hero-pixel-bg" aria-hidden="true">
-            <div class="pixel-stars"></div>
-            <div class="pixel-honeycomb"></div>
-            <div class="pixel-clouds">
-                <span class="cloud c1"></span>
-                <span class="cloud c2"></span>
-                <span class="cloud c3"></span>
-            </div>
-            <div class="pixel-ground"></div>
-            <div class="pixel-bee" title="bee">
-                <span class="pb-wing"></span>
-                <span class="pb-body"></span>
-                <span class="pb-wing pb-wing-r"></span>
-            </div>
-            <div class="hero-overlay"></div>
-        </div>
-
-        <div class="container">
-            <div class="hero-content fade-in">
-                <h1 class="hero-title">
-                    <span class="title-line">蜜蜂狗</span>
-                    <span class="title-line title-gradient">BeeDog</span>
-                </h1>
-                <p class="hero-subtitle">说 明 书</p>
-                <p class="hero-description">
-                    🎮 <b>Quest 01</b>：探索 AI 与电商的融合创新 · 运营策略 · 数据驱动<br>
-                    <span style="opacity:.8">用科技赋能业务,用数据驱动决策——每一次点击,都是一次 +1 EXP</span>
-                </p>
-                <div class="hero-buttons">
-                    <a href="portfolio.html" class="btn btn-primary js-clickable">查看作品</a>
-                    <a href="contact.html" class="btn btn-secondary js-clickable">联系我</a>
-                </div>
-                <span class="hidden-hint">HINT · 试试键盘输入 ↑↑↓↓←→←→BA</span>
-            </div>
-
-            <div class="hero-stats fade-in">
-                <div class="stat-item js-clickable" data-label="HP">
-                    <div class="stat-number">3+</div>
-                    <div class="stat-label">年电商运营经验</div>
-                </div>
-                <div class="stat-item js-clickable" data-label="MP">
-                    <div class="stat-number">2+</div>
-                    <div class="stat-label">AI项目实战</div>
-                </div>
-                <div class="stat-item js-clickable" data-label="EXP">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">数据驱动决策</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 重点项目 -->
-    <section class="featured-projects">
-        <div class="container">
-            <h2 class="section-title fade-in">重点项目</h2>
-            <div class="projects-grid">
-                <div class="project-card featured card-hover scale-in js-clickable" title="双击试试看?">
-                    <div class="project-icon icon-hover">🎬</div>
-                    <h3 class="project-title">快手电商运营项目</h3>
-                    <p class="project-company">快手电商 · 行业运营</p>
-                    <p class="project-description">
-                        打造多个百万单品,优化类目品退率下降50%,推动GMV提升40%
-                    </p>
-                    <a href="portfolio.html" class="project-link js-clickable">了解更多 →</a>
-                </div>
-                <div class="project-card featured card-hover scale-in js-clickable" title="双击试试看?">
-                    <div class="project-icon icon-hover">🤖</div>
-                    <h3 class="project-title">AI客服训练数据体系</h3>
-                    <p class="project-company">某独角兽乳企 · AI策略运营</p>
-                    <p class="project-description">
-                        构建AI训练数据体系,关键意图识别准确率提升21.2%,用户满意度达93%
-                    </p>
-                    <a href="portfolio.html" class="project-link js-clickable">了解更多 →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 技能区 -->
-    <section class="skills">
-        <div class="container">
-            <h2 class="section-title">核心能力</h2>
-            <div class="skills-grid">
-                <div class="skill-item js-clickable">
-                    <div class="skill-icon">📊</div>
-                    <h3>数据分析</h3>
-                    <p>SQL · Python · 数据驱动决策</p>
-                </div>
-                <div class="skill-item js-clickable">
-                    <div class="skill-icon">🎯</div>
-                    <h3>运营策略</h3>
-                    <p>用户运营 · 商家运营 · 品类治理</p>
-                </div>
-                <div class="skill-item js-clickable">
-                    <div class="skill-icon">🤖</div>
-                    <h3>AI应用</h3>
-                    <p>Prompt工程 · Agent开发 · 数据标注</p>
-                </div>
-                <div class="skill-item js-clickable">
-                    <div class="skill-icon">💡</div>
-                    <h3>产品策划</h3>
-                    <p>用户调研 · 产品优化 · A/B测试</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="brand-icon">🐝</span>
-                    <span class="brand-text">BeeDog</span>
-                </div>
-                <p class="footer-description">蜜蜂狗BeeDog的说明书 — 探索AI与电商的无限可能</p>
-                <div class="footer-links">
-                    <a href="index.html" class="js-clickable">首页</a>
-                    <a href="about.html" class="js-clickable">关于我</a>
-                    <a href="portfolio.html" class="js-clickable">作品集</a>
-                    <a href="blog.html" class="js-clickable">博客</a>
-                    <a href="books.html" class="js-clickable">书架</a>
-                    <a href="travel.html" class="js-clickable">足迹</a>
-                    <a href="now.html" class="js-clickable">NOW</a>
-                    <a href="game.html" class="js-clickable">小游戏</a>
-                    <a href="guestbook.html" class="js-clickable">留言板</a>
-                    <a href="contact.html" class="js-clickable">联系方式</a>
-                </div>
-                <p class="footer-copyright">© 2025 苏笔辉 · GAME OVER? INSERT COIN TO CONTINUE</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- 左下角彩蛋按钮 -->
-    <button class="secret-star" id="secretStar" aria-label="神秘星星">✦</button>
-
-    <!-- Toast 提示 -->
-    <div class="toast" id="toast"></div>
-
-    <script src="js/main.js"></script>
-    <script src="js/effects.js"></script>
+    <div class="console-layout">
+      <aside class="console-rail" aria-hidden="true">
+        <div class="rail-label">CHAPTER</div><div class="module-number" id="module-number">01</div><div class="rail-word" aria-hidden="true">KEEP<br>GOING.</div></aside>
+      <div class="dialog-body">
+        <div class="module-meta"><span id="zone-code">01 / WORK</span><span class="module-rule"></span><span class="module-marker" aria-hidden="true">＋</span></div>
+        <p class="eyebrow" id="zone-eyebrow"></p>
+        <h2 id="zone-title"></h2>
+        <p class="zone-description" id="zone-description"></p>
+        <div class="link-section-label"><span>目录 / INDEX</span><span class="index-hatch" aria-hidden="true"></span></div>
+        <div id="zone-links" class="zone-links"></div>
+      </div>
+    </div>
+    <div class="dialog-footer"><span class="footer-port" aria-hidden="true"></span><span>选择条目，进入详情</span><span class="console-footer-code">BEEDOG / PERSONAL ARCHIVE</span><span class="footer-screw" aria-hidden="true">＋</span></div>
+  </dialog>
+  <noscript><div class="noscript-nav">探索导航：<a href="portfolio.html">作品集</a> · <a href="blog.html">博客</a> · <a href="books.html">书架</a> · <a href="travel.html">旅行</a> · <a href="game.html">小游戏</a> · <a href="about.html">关于我</a> · <a href="now.html">此刻</a> · <a href="guestbook.html">留言板</a></div></noscript>
 </body>
 </html>

@@ -19,7 +19,14 @@
   const hamburger = $('#hamburger');
   const navMenu = $('#navMenu') || $('.nav-menu');
   if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
+    const closeMenu = () => { navMenu.classList.remove('active'); hamburger.setAttribute('aria-expanded', 'false'); hamburger.setAttribute('aria-label', '打开导航'); };
+    hamburger.addEventListener('click', () => {
+      const opened = navMenu.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', String(opened));
+      hamburger.setAttribute('aria-label', opened ? '关闭导航' : '打开导航');
+    });
+    navMenu.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && navMenu.classList.contains('active')) { closeMenu(); hamburger.focus(); } });
   }
 
   // ---------- SCORE HUD ----------

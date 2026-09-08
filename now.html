@@ -4,38 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="BeeDog · NOW · 当下在做什么">
-    <meta name="theme-color" content="#FFD23F">
+    <meta name="theme-color" content="#211c38">
     <title>● NOW · 当下 - BeeDog</title>
     <link rel="stylesheet" href="css/style.css?v=20260709">
     <link rel="stylesheet" href="css/effects.css?v=20260709">
     <link rel="stylesheet" href="css/pixel-extras.css">
+    <link rel="stylesheet" href="css/outpost.css?v=20260908-resume">
+    <link rel="stylesheet" href="css/site-system.css?v=20260908-ace-cycle">
+    <script src="js/site-shell.js?v=20260908-ace-cycle" defer></script>
 </head>
-<body>
+<body class="interior-page">
     <div class="score-hud" id="scoreHud"><span class="score-bee">🐝</span><span class="score-label">SCORE</span><span class="score-value" id="scoreValue">0000</span></div>
     <div class="bee-cursor" id="beeCursor" aria-hidden="true">🐝</div>
 
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand"><a href="index.html"><span class="brand-icon">🐝</span><span class="brand-text">BeeDog</span></a></div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="about.html">关于我</a></li>
-                <li><a href="portfolio.html">作品集</a></li>
-                <li><a href="blog.html">博客</a></li>
-                <li><a href="books.html">最近在看的书</a></li>
-                <li><a href="travel.html">我去过的地方</a></li>
-                <li><a href="now.html" class="active">NOW</a></li>
-                <li><a href="game.html">🎮</a></li>
-                <li><a href="guestbook.html">留言板</a></li>
-                <li><a href="contact.html">联系方式</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-        </div>
-    </nav>
+    <!-- SITE HEADER -->
+<header class="site-header"><div class="site-bar">
+  <a class="site-brand" href="index.html" aria-label="BeeDog 首页"><span class="site-monogram" aria-hidden="true">B<span>·</span></span><span class="site-brand-name">BeeDog<small>STAY CURIOUS / KEEP GOING</small></span></a>
+  <nav class="site-nav" id="site-navigation" aria-label="主导航"><a href="index.html">首页</a><a href="portfolio.html">作品</a><a href="blog.html">博客</a><a href="books.html">书架</a><a href="travel.html">旅行</a><a href="about.html">关于我</a><details class="site-more"><summary>更多 <span aria-hidden="true">＋</span></summary><div class="site-more-menu"><a href="now.html" aria-current="page">NOW · 此刻</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a></div></details></nav>
+  <div class="site-header-actions"><a class="site-contact" href="contact.html">建立联系 <span aria-hidden="true">↗</span></a><button class="site-menu-toggle" id="site-menu-toggle" aria-label="打开导航" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button></div>
+</div></header>
+<!-- /SITE HEADER -->
 
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title">● NOW</h1>
+            <h1 class="page-title">NOW</h1>
             <p class="page-subtitle">当下 · WHAT I'M DOING NOW</p>
         </div>
     </section>
@@ -44,99 +36,29 @@
         <div class="container">
             <div class="now-wrap">
                 <div class="now-hero">
-                    <div class="now-date" id="nowDate">UPDATED · 2026.04</div>
-                    <div class="now-headline">
-                        在 <span style="color:var(--bee-yellow-bright)">腾讯</span> 做模型评测相关工作,
-                        同时在试图搞懂怎么把模型能力变成可观察、可比较、可迭代的标准。
-                    </div>
-                    <p style="color:var(--text-secondary); line-height:1.9; margin-top:18px;">
-                        受 <a href="https://nownownow.com/about" target="_blank" style="color:var(--bee-yellow); text-decoration:underline;">nownownow.com</a> 启发 —
-                        这一页只写"此刻"。不是"我是谁",也不是"我做过什么",而是——如果你今天约我吃饭,我会跟你聊的那些事。
-                    </p>
+                    <div class="now-date" id="nowDate">UPDATED · 2026.09.08</div>
+                    <div class="now-headline">在成都，做 <span style="color:var(--bee-yellow)">大模型评测项目管理</span>，推进 ACE 与 Skill 的持续迭代。</div>
+                    <p style="color:var(--text-secondary);line-height:1.9;margin-top:18px;">目前在腾讯（子公司编制），重点参与自动评测归因系统与智能客服 Skill 建设，关注评测标准、线上问题和跨团队整改闭环。</p>
                 </div>
-
                 <div class="now-grid">
-                    <div class="now-card">
-                        <h3>🎯 工作上在推的</h3>
-                        <ul>
-                            <li>围绕模型能力边界设计评测维度与样本</li>
-                            <li>沉淀 Bad Case,把模糊问题拆成可复盘的评测标准</li>
-                            <li class="done">把业务反馈翻译成模型可优化的方向</li>
-                        </ul>
-                    </div>
-
-                    <div class="now-card">
-                        <h3>📚 在读的书</h3>
-                        <ul>
-                            <li>《高效能人士的七个习惯》 · 35% · 被动→主动</li>
-                            <li>《被讨厌的勇气》 · 60% · 阿德勒让人很上头</li>
-                            <li class="done">《金字塔原理》 · MECE 从此上头</li>
-                        </ul>
-                    </div>
-
-                    <div class="now-card">
-                        <h3>🤖 在折腾的 AI 工具</h3>
-                        <ul>
-                            <li>Cursor + Claude Code 写个人小工具</li>
-                            <li>用 Prompt 工程给模型评测场景建评估集</li>
-                            <li>研究多 Agent 协同怎么不打架</li>
-                        </ul>
-                    </div>
-
-                    <div class="now-card">
-                        <h3>🏃 生活里的</h3>
-                        <ul>
-                            <li>每周 2 次跑步,目标 5K 进 25 分钟</li>
-                            <li>周末在西湖边晃,偶尔骑行到龙井</li>
-                            <li>在攒一个下一次出远门的清单</li>
-                        </ul>
-                    </div>
-
-                    <div class="now-card">
-                        <h3>💭 最近在想的</h3>
-                        <ul>
-                            <li>AI 的 "人味" 到底来自哪里</li>
-                            <li>数据驱动 vs 直觉判断的边界</li>
-                            <li>25 岁之前要不要再换一次赛道</li>
-                        </ul>
-                    </div>
-
-                    <div class="now-card">
-                        <h3>📮 欢迎聊</h3>
-                        <ul>
-                            <li>AI 运营 / Prompt 工程实战</li>
-                            <li>电商策略 / 数据分析</li>
-                            <li>或者就随便聊聊 · 📧 <a href="mailto:s1870567841@163.com" style="color:var(--bee-yellow)">邮件我</a></li>
-                        </ul>
-                    </div>
+                    <div class="now-card"><h3>01 / 工作</h3><p>设计并调优评测 Agent 与标注 Agent 提示词，参与现网对话、自动评测、归因、Playbook 更新与回归验证流程。</p></div>
+                    <div class="now-card"><h3>02 / 探索</h3><p>优化 Skill 结构、知识挂载与工具调用规范，结合线上反馈和转人工数据定位失败场景，持续复测改进。</p></div>
+                    <div class="now-card"><h3>03 / 创作</h3><p>逐步建立自己的内容账号，记录 AI、职业发展与个人成长中的观察和实践。</p></div>
+                    <div class="now-card"><h3>04 / 联系</h3><p>欢迎交流 AI 应用、数据与业务协作。<a href="contact.html" style="color:var(--bee-yellow)">给我发一条消息 ↗</a></p></div>
                 </div>
-
-                <p style="margin-top:40px; text-align:center; font-family:'Press Start 2P',monospace; font-size:10px; color:var(--text-muted); letter-spacing:2px;">
-                    THIS PAGE IS A <span style="color:var(--bee-yellow)">NOW PAGE</span> · 按 <a href="index.html" style="color:var(--bee-yellow)">回首页</a>
-                </p>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand"><span class="brand-icon">🐝</span><span class="brand-text">BeeDog</span></div>
-                <p class="footer-description">蜜蜂狗BeeDog的说明书</p>
-                <p class="footer-copyright">© 2025 苏笔辉</p>
-            </div>
-        </div>
-    </footer>
+
 
     <button class="secret-star" id="secretStar" aria-label="神秘星星">✦</button>
     <div class="toast" id="toast"></div>
 
     <script src="js/main.js"></script>
     <script src="js/effects.js"></script>
-    <script>
-        const d = new Date();
-        document.getElementById('nowDate').textContent =
-            'UPDATED · ' + d.getFullYear() + '.' + String(d.getMonth()+1).padStart(2,'0');
-    </script>
+<!-- SITE FOOTER -->
+<footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-identity"><a href="index.html">BeeDog <span>＋</span></a><span>© 2026 苏笔辉</span></div><nav class="site-footer-links" aria-label="页脚导航"><a href="now.html">NOW</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a><a href="contact.html">联系我</a></nav><button class="site-motion" id="motion-toggle" aria-pressed="false">动态效果 <span id="motion-label">开启</span><i aria-hidden="true"></i></button></div></footer>
+<!-- /SITE FOOTER -->
 </body>
 </html>

@@ -3,44 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="关于苏笔辉 - AI应用 | 模型评测 | 数据驱动">
+    <meta name="description" content="关于苏笔辉 - 大模型评测项目管理 | Agent 评测 | Skill 优化">
     <title>关于我 - 蜜蜂狗BeeDog的说明书</title>
     <link rel="stylesheet" href="css/style.css?v=20260709">
     <link rel="stylesheet" href="css/pixel-extras.css">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/outpost.css?v=20260908-resume">
+    <link rel="stylesheet" href="css/site-system.css?v=20260908-ace-cycle">
+    <script src="js/site-shell.js?v=20260908-ace-cycle" defer></script>
 </head>
-<body>
+<body class="interior-page">
     <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="index.html">
-                    <span class="brand-icon">🐝</span>
-                    <span class="brand-text">BeeDog</span>
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="about.html" class="active">关于我</a></li>
-                <li><a href="portfolio.html">作品集</a></li>
-                <li><a href="blog.html">博客</a></li>
-                <li><a href="books.html">最近在看的书</a></li>
-                <li><a href="travel.html">我去过的地方</a></li>
-                <li><a href="now.html">NOW</a></li>
-                <li><a href="game.html">🎮</a></li>
-                <li><a href="guestbook.html">留言板</a></li>
-                <li><a href="contact.html">联系方式</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- SITE HEADER -->
+<header class="site-header"><div class="site-bar">
+  <a class="site-brand" href="index.html" aria-label="BeeDog 首页"><span class="site-monogram" aria-hidden="true">B<span>·</span></span><span class="site-brand-name">BeeDog<small>STAY CURIOUS / KEEP GOING</small></span></a>
+  <nav class="site-nav" id="site-navigation" aria-label="主导航"><a href="index.html">首页</a><a href="portfolio.html">作品</a><a href="blog.html">博客</a><a href="books.html">书架</a><a href="travel.html">旅行</a><a href="about.html" aria-current="page">关于我</a><details class="site-more"><summary>更多 <span aria-hidden="true">＋</span></summary><div class="site-more-menu"><a href="now.html">NOW · 此刻</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a></div></details></nav>
+  <div class="site-header-actions"><a class="site-contact" href="contact.html">建立联系 <span aria-hidden="true">↗</span></a><button class="site-menu-toggle" id="site-menu-toggle" aria-label="打开导航" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button></div>
+</div></header>
+<!-- /SITE HEADER -->
 
     <!-- 页面标题 -->
     <section class="page-header">
@@ -56,18 +39,9 @@
             <div class="intro-content">
                 <div class="intro-text">
                     <h2 class="section-title-left">👋 你好，我是苏笔辉</h2>
-                    <p class="intro-description">
-                        前电商民工，现AI民工。我是一名专注于<strong>AI应用</strong>和<strong>模型评测</strong>的策略运营，
-                        拥有3+年的电商运营经验和2+年的AI项目实战经验。
-                    </p>
-                    <p class="intro-description">
-                        目前在<strong>腾讯</strong>从事模型评测相关工作，关注模型能力边界、评测集构建、Bad Case 分析与效果迭代。
-                        我喜欢把模糊的业务问题拆成可观察、可比较、可复盘的评测标准，让模型改进有更清晰的方向。
-                    </p>
-                    <p class="intro-description">
-                        我相信<strong>数据驱动决策</strong>，擅长运用SQL、Python进行数据分析，通过A/B测试验证运营策略。
-                        在这个AI重塑商业世界的时代，我致力于探索 AI 能力如何更稳定地服务真实业务，用评测连接模型表现与用户体验。
-                    </p>
+                    <p class="intro-description">我是苏笔辉，目前在<strong>腾讯（子公司编制）</strong>从事<strong>大模型评测项目管理</strong>，重点参与 ACE 自动评测归因系统建设，以及智能客服场景下的 Skill 建设与优化。</p>
+                    <p class="intro-description">我负责把任务完成、能力调用、回复质量和异常处理等维度，转成可执行的评测标准；参与从现网对话、自动评测、Bad Case 归因，到 Playbook 更新与复测回归的协作闭环。</p>
+                    <p class="intro-description">此前在认养一头牛担任 AI 产品策划（管培生），参与客服 Agent 迭代、图文评测与语音标注质检；也有快手多模态数据训练及电商运营实习经历。习惯用 <strong>Python、SQL 与自动化工作流</strong>拆解问题，把分析落到具体的改进上。</p>
                     <div class="contact-info">
                         <div class="contact-item">
                             <span class="contact-icon">📧</span>
@@ -88,19 +62,31 @@
         <div class="container">
             <h2 class="section-title">核心技能</h2>
             <div class="skills-tags">
-                <div class="skill-tag">数据分析</div>
-                <div class="skill-tag">SQL</div>
+                <div class="skill-tag">Agent 评测</div>
+                <div class="skill-tag">评测标准设计</div>
+                <div class="skill-tag">Bad Case 归因</div>
+                <div class="skill-tag">Skill 结构优化</div>
+                <div class="skill-tag">Prompt 工程</div>
+                <div class="skill-tag">训练数据质检</div>
                 <div class="skill-tag">Python</div>
-                <div class="skill-tag">模型评测</div>
-                <div class="skill-tag">评测集构建</div>
-                <div class="skill-tag">Prompt工程</div>
-                <div class="skill-tag">AI Agent</div>
-                <div class="skill-tag">Bad Case分析</div>
-                <div class="skill-tag">效果迭代</div>
-                <div class="skill-tag">产品策划</div>
-                <div class="skill-tag">A/B测试</div>
-                <div class="skill-tag">业务理解</div>
+                <div class="skill-tag">SQL</div>
+                <div class="skill-tag">Coze</div>
+                <div class="skill-tag">n8n</div>
+                <div class="skill-tag">MCP 工具协作</div>
+                <div class="skill-tag">跨团队项目管理</div>
             </div>
+        </div>
+    </section>
+
+    <section class="career-section">
+        <div class="container">
+            <h2 class="section-title">我的工作坐标</h2>
+            <ol class="career-timeline">
+                <li><time>2026.05 — 至今</time><div><h3>腾讯（子公司编制）</h3><p>大模型评测项目管理</p><a href="portfolio.html#ace">ACE 自动评测归因 · Skill 建设与优化 ↗</a></div></li>
+                <li><time>2025.02 — 2026.03</time><div><h3>认养一头牛</h3><p>AI 产品策划（管培生）</p><a href="portfolio.html#customer-agent">客服 Agent · 图文评测 · 语音标注质检 ↗</a></div></li>
+                <li><time>2024.06 — 2025.01</time><div><h3>快手多模态（可灵）</h3><p>多模态数据训练实习生</p><a href="portfolio.html#multimodal-training">电商知识库质检 · 直播切片标注 ↗</a></div></li>
+                <li><time>2023.11 — 2024.07</time><div><h3>快手电商</h3><p>行业运营实习生</p><a href="portfolio.html#commerce">木作文玩及手表类目运营与治理 ↗</a></div></li>
+            </ol>
         </div>
     </section>
 
@@ -115,41 +101,22 @@
                     <p class="education-major">电子商务（数字经济实验班）· 本科</p>
                     <p class="education-time">2021.09 - 2025.06</p>
                     <div class="education-courses">
-                        <p><strong>主修课程：</strong></p>
-                        <p>管理学、微观经济学、市场营销、网络营销、人力资源等管理营销课程</p>
-                        <p>Python数据分析、SQL数据库管理、程序设计、数理统计等数据分析课程</p>
+                        <p><strong>绩点排名：</strong>专业前 10%</p>
+                        <p><strong>在校荣誉：</strong>“AI+电商”校园创新应用大赛一等奖；优秀学生综合奖学金（一等 / 三等）</p>
+                        <p><strong>校园实践：</strong>担任校学生会科协部长，组织 AI 沙龙、行业分享与自媒体运营。社群包含 3 个千人大群、1 个五百人群，账号首月涨粉 1500+。</p>
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="brand-icon">🐝</span>
-                    <span class="brand-text">BeeDog</span>
-                </div>
-                <p class="footer-description">蜜蜂狗BeeDog的说明书 - 探索AI与电商的无限可能</p>
-                <div class="footer-links">
-                    <a href="index.html">首页</a>
-                    <a href="about.html">关于我</a>
-                    <a href="portfolio.html">作品集</a>
-                    <a href="blog.html">博客</a>
-                    <a href="books.html">书架</a>
-                    <a href="travel.html">我去过的地方</a>
-                    <a href="now.html">NOW</a>
-                    <a href="game.html">小游戏</a>
-                    <a href="guestbook.html">留言板</a>
-                    <a href="contact.html">联系方式</a>
-                </div>
-                <p class="footer-copyright">© 2025 苏笔辉. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+
 
     <script src="js/main.js"></script>
+<!-- SITE FOOTER -->
+<footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-identity"><a href="index.html">BeeDog <span>＋</span></a><span>© 2026 苏笔辉</span></div><nav class="site-footer-links" aria-label="页脚导航"><a href="now.html">NOW</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a><a href="contact.html">联系我</a></nav><button class="site-motion" id="motion-toggle" aria-pressed="false">动态效果 <span id="motion-label">开启</span><i aria-hidden="true"></i></button></div></footer>
+<!-- /SITE FOOTER -->
 </body>
 </html>

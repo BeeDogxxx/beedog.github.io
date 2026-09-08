@@ -4,38 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="BeeDog 的道具栏 Inventory · 最近在看的书">
-    <meta name="theme-color" content="#FFD23F">
+    <meta name="theme-color" content="#211c38">
     <title>📚 Inventory · 最近在看的书 - BeeDog</title>
     <link rel="stylesheet" href="css/style.css?v=20260709">
     <link rel="stylesheet" href="css/effects.css?v=20260709">
     <link rel="stylesheet" href="css/pixel-extras.css">
+    <link rel="stylesheet" href="css/outpost.css?v=20260908">
+    <link rel="stylesheet" href="css/site-system.css?v=20260908-ace-cycle">
+    <script src="js/site-shell.js?v=20260908-ace-cycle" defer></script>
 </head>
-<body>
+<body class="interior-page">
     <div class="score-hud" id="scoreHud"><span class="score-bee">🐝</span><span class="score-label">SCORE</span><span class="score-value" id="scoreValue">0000</span></div>
     <div class="bee-cursor" id="beeCursor" aria-hidden="true">🐝</div>
 
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand"><a href="index.html"><span class="brand-icon">🐝</span><span class="brand-text">BeeDog</span></a></div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="about.html">关于我</a></li>
-                <li><a href="portfolio.html">作品集</a></li>
-                <li><a href="blog.html">博客</a></li>
-                <li><a href="books.html" class="active">最近在看的书</a></li>
-                <li><a href="travel.html">我去过的地方</a></li>
-                <li><a href="now.html">NOW</a></li>
-                <li><a href="game.html">🎮</a></li>
-                <li><a href="guestbook.html">留言板</a></li>
-                <li><a href="contact.html">联系方式</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-        </div>
-    </nav>
+    <!-- SITE HEADER -->
+<header class="site-header"><div class="site-bar">
+  <a class="site-brand" href="index.html" aria-label="BeeDog 首页"><span class="site-monogram" aria-hidden="true">B<span>·</span></span><span class="site-brand-name">BeeDog<small>STAY CURIOUS / KEEP GOING</small></span></a>
+  <nav class="site-nav" id="site-navigation" aria-label="主导航"><a href="index.html">首页</a><a href="portfolio.html">作品</a><a href="blog.html">博客</a><a href="books.html" aria-current="page">书架</a><a href="travel.html">旅行</a><a href="about.html">关于我</a><details class="site-more"><summary>更多 <span aria-hidden="true">＋</span></summary><div class="site-more-menu"><a href="now.html">NOW · 此刻</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a></div></details></nav>
+  <div class="site-header-actions"><a class="site-contact" href="contact.html">建立联系 <span aria-hidden="true">↗</span></a><button class="site-menu-toggle" id="site-menu-toggle" aria-label="打开导航" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button></div>
+</div></header>
+<!-- /SITE HEADER -->
 
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title">📚 最近在看的书</h1>
+            <h1 class="page-title">最近在看的书</h1>
             <p class="page-subtitle">INVENTORY · 道具栏</p>
         </div>
     </section>
@@ -48,7 +40,7 @@
                     <button class="inv-tab" data-filter="reading">在读</button>
                     <button class="inv-tab" data-filter="done">通关</button>
                     <button class="inv-tab" data-filter="wish">愿望</button>
-                    <span style="margin-left:auto; color:var(--text-muted); align-self:center; font-size:10px;">
+                    <span style="margin-left:auto; color:var(--text-muted); align-self:center; font-size:12px;">
                         <span id="bookCount">0</span> / <span id="bookTotal">0</span> 本
                     </span>
                 </div>
@@ -57,15 +49,7 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand"><span class="brand-icon">🐝</span><span class="brand-text">BeeDog</span></div>
-                <p class="footer-description">蜜蜂狗BeeDog的说明书</p>
-                <p class="footer-copyright">© 2025 苏笔辉 · GAME OVER? INSERT COIN TO CONTINUE</p>
-            </div>
-        </div>
-    </footer>
+
 
     <button class="secret-star" id="secretStar" aria-label="神秘星星">✦</button>
     <div class="toast" id="toast"></div>
@@ -143,5 +127,8 @@
 
     render();
     </script>
+<!-- SITE FOOTER -->
+<footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-identity"><a href="index.html">BeeDog <span>＋</span></a><span>© 2026 苏笔辉</span></div><nav class="site-footer-links" aria-label="页脚导航"><a href="now.html">NOW</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a><a href="contact.html">联系我</a></nav><button class="site-motion" id="motion-toggle" aria-pressed="false">动态效果 <span id="motion-label">开启</span><i aria-hidden="true"></i></button></div></footer>
+<!-- /SITE FOOTER -->
 </body>
 </html>

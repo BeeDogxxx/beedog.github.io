@@ -8,36 +8,22 @@
     <link rel="stylesheet" href="css/style.css?v=20260709">
     <link rel="stylesheet" href="css/pixel-extras.css">
     <link rel="stylesheet" href="css/contact.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/outpost.css?v=20260908">
+    <link rel="stylesheet" href="css/site-system.css?v=20260908-ace-cycle">
+    <script src="js/site-shell.js?v=20260908-ace-cycle" defer></script>
 </head>
-<body>
+<body class="interior-page">
     <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="index.html">
-                    <span class="brand-icon">🐝</span>
-                    <span class="brand-text">BeeDog</span>
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="about.html">关于我</a></li>
-                <li><a href="portfolio.html">作品集</a></li>
-                <li><a href="blog.html">博客</a></li>
-                <li><a href="books.html">最近在看的书</a></li>
-                <li><a href="travel.html">我去过的地方</a></li>
-                <li><a href="contact.html" class="active">联系方式</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- SITE HEADER -->
+<header class="site-header"><div class="site-bar">
+  <a class="site-brand" href="index.html" aria-label="BeeDog 首页"><span class="site-monogram" aria-hidden="true">B<span>·</span></span><span class="site-brand-name">BeeDog<small>STAY CURIOUS / KEEP GOING</small></span></a>
+  <nav class="site-nav" id="site-navigation" aria-label="主导航"><a href="index.html">首页</a><a href="portfolio.html">作品</a><a href="blog.html">博客</a><a href="books.html">书架</a><a href="travel.html">旅行</a><a href="about.html">关于我</a><details class="site-more"><summary>更多 <span aria-hidden="true">＋</span></summary><div class="site-more-menu"><a href="now.html">NOW · 此刻</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a></div></details></nav>
+  <div class="site-header-actions"><a class="site-contact" href="contact.html">建立联系 <span aria-hidden="true">↗</span></a><button class="site-menu-toggle" id="site-menu-toggle" aria-label="打开导航" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button></div>
+</div></header>
+<!-- /SITE HEADER -->
 
     <!-- 页面标题 -->
     <section class="page-header">
@@ -54,7 +40,8 @@
             <div class="contact-grid">
                 <!-- 联系表单 -->
                 <div class="contact-form-wrapper">
-                    <h2 class="form-title">发送消息</h2>
+                    <h2 class="form-title">写一封邮件</h2>
+                    <p class="contact-note">填写后会打开你的邮件应用，内容会带入草稿。请在邮件应用中确认发送；本站不会直接提交消息。也可以复制右侧邮箱联系我。</p>
                     <form class="contact-form" onsubmit="handleSubmit(event)">
                         <div class="form-group">
                             <label for="name">姓名 *</label>
@@ -73,7 +60,7 @@
                             <textarea id="message" name="message" rows="6" required placeholder="请输入您的留言内容..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn">
-                            <span>发送消息</span>
+                            <span>打开邮件应用</span>
                             <span class="btn-icon">→</span>
                         </button>
                     </form>
@@ -82,7 +69,7 @@
                 <!-- 联系信息 -->
                 <div class="contact-info-wrapper">
                     <h2 class="info-title">联系信息</h2>
-                    
+
                     <div class="contact-info-item">
                         <div class="contact-icon">📧</div>
                         <div class="contact-details">
@@ -103,7 +90,7 @@
                         <div class="contact-icon">📍</div>
                         <div class="contact-details">
                             <h3>位置</h3>
-                            <p>杭州，中国</p>
+                            <p>成都，中国</p>
                         </div>
                     </div>
 
@@ -136,56 +123,31 @@
     </section>
 
     <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="brand-icon">🐝</span>
-                    <span class="brand-text">BeeDog</span>
-                </div>
-                <p class="footer-description">蜜蜂狗BeeDog的说明书 - 探索AI与电商的无限可能</p>
-                <div class="footer-links">
-                    <a href="index.html">首页</a>
-                    <a href="about.html">关于我</a>
-                    <a href="portfolio.html">作品集</a>
-                    <a href="blog.html">博客</a>
-                    <a href="books.html">书架</a>
-                    <a href="travel.html">我去过的地方</a>
-                    <a href="now.html">NOW</a>
-                    <a href="game.html">小游戏</a>
-                    <a href="guestbook.html">留言板</a>
-                    <a href="contact.html">联系方式</a>
-                </div>
-                <p class="footer-copyright">© 2025 苏笔辉. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+
 
     <script>
         // 表单提交处理
         function handleSubmit(event) {
             event.preventDefault();
-            
+
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 subject: document.getElementById('subject').value,
                 message: document.getElementById('message').value
             };
-            
-            // 这里是演示，实际使用时需要连接后端API
-            alert(`感谢您的留言，${formData.name}！\n\n我会尽快回复您的消息。\n\n（演示版本，实际使用时需要连接后端API）`);
-            
-            // 清空表单
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('subject').value = '';
-            document.getElementById('message').value = '';
+
+            const subject = formData.subject.trim() || '来自 BeeDog 网站的联系';
+            const body = `姓名：${formData.name}\n回复邮箱：${formData.email}\n\n${formData.message}`;
+            window.location.href = 'mailto:s1870567841@163.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
         }
 
-        // 加载主脚本
-        // 注意：由于这是一个静态页面，暂时不加载完整的main.js，避免冲突
-        console.log('🐝 蜜蜂狗BeeDog的说明书 联系方式页面已加载！');
+
     </script>
+    <script src="js/main.js"></script>
+<!-- SITE FOOTER -->
+<footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-identity"><a href="index.html">BeeDog <span>＋</span></a><span>© 2026 苏笔辉</span></div><nav class="site-footer-links" aria-label="页脚导航"><a href="now.html">NOW</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a><a href="contact.html">联系我</a></nav><button class="site-motion" id="motion-toggle" aria-pressed="false">动态效果 <span id="motion-label">开启</span><i aria-hidden="true"></i></button></div></footer>
+<!-- /SITE FOOTER -->
 </body>
 </html>
