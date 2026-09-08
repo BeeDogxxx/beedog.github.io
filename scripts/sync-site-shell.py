@@ -2,7 +2,7 @@
 from pathlib import Path
 import re
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '20260908-ink-details'
+VERSION = '20260908-editorial'
 ROUTES = [('index.html','首页'),('portfolio.html','作品'),('blog.html','博客'),('books.html','书架'),('travel.html','旅行'),('about.html','关于我')]
 MORE = [('now.html','NOW · 此刻'),('game.html','小游戏'),('guestbook.html','留言板')]
 
@@ -25,12 +25,13 @@ def footer():
 
 for p in sorted(ROOT.glob('*.html')):
     t=p.read_text()
-    theme=f'<link rel="stylesheet" href="css/site-system.css?v={VERSION}">\n    <link rel="stylesheet" href="css/comic-details.css?v={VERSION}">\n    <script src="js/site-shell.js?v={VERSION}" defer></script>'
+    theme=f'<link rel="stylesheet" href="css/site-system.css?v={VERSION}">\n    <link rel="stylesheet" href="css/comic-details.css?v={VERSION}">\n    <script src="js/site-shell.js?v={VERSION}" defer></script>\n    <script src="js/editorial-motion.js?v={VERSION}" defer></script>'
     t=re.sub(r'\s*<link[^>]+href="css/site-system\.css[^\"]*"[^>]*>','',t)
     t=re.sub(r'\s*<script[^>]+src="js/site-shell\.js[^\"]*"[^>]*></script>','',t)
     t=re.sub(r'\s*<link[^>]+href="css/comic-details\.css[^\"]*"[^>]*>','',t)
+    t=re.sub(r'\s*<script[^>]+src="js/editorial-motion\.js[^\"]*"[^>]*></script>','',t)
     t=t.replace('</head>','    '+theme+'\n</head>')
-    t=re.sub(r'<body(?: class="[^"]*")?>',f'<body class="{"world-page" if p.name=="index.html" else "interior-page"}">',t,count=1)
+    t=re.sub(r'<body(?: class="[^"]*")?>',f'<body class="{"world-page" if p.name=="index.html" else "interior-page arcade-page" if p.name=="game.html" else "interior-page"}">',t,count=1)
     if '<!-- SITE HEADER -->' in t:
         t=re.sub(r'<!-- SITE HEADER -->.*?<!-- /SITE HEADER -->',header(p.name),t,flags=re.S)
     elif p.name=='index.html':
