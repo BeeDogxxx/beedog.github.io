@@ -2,9 +2,10 @@ const assert = require('node:assert/strict');
 const vm = require('node:vm');
 const fs = require('node:fs');
 const code = fs.readFileSync(require.resolve('../js/editorial-motion.js'), 'utf8');
-function setup({ reduced = false, disabled = false, support = true } = {}) {
+function setup({ reduced = false, disabled = false, support = true, chapters = false } = {}) {
   const element = () => { const classes = new Set(); return { classes, style: { setProperty() {} }, classList: { contains: x => classes.has(x), add: x => classes.add(x), remove: x => classes.delete(x) }, listeners: {}, addEventListener(k, fn) { this.listeners[k] = fn; }, removeEventListener(k) { delete this.listeners[k]; } }; };
-  const body = element(), items = [element(), element()];
+  const body = element(), items = Array.from({ length: chapters ? 4 : 2 }, element);
+  if (chapters) items.forEach(item => item.classes.add('destination'));
   items.forEach(item => { item.parentElement = { children: items }; });
   if (disabled) body.classes.add('motion-off');
   let intersection, mutation, changes, observes = 0, disconnected = false;
@@ -21,4 +22,11 @@ for (const item of test.items) item.listeners.animationend({ target: item, anima
 test.enter(); assert(test.items.every(x => !x.classes.has('editorial-enter')));
 const off = setup(); off.enter(); off.off(); assert(off.disconnected()); assert(off.items.every(x => !x.classes.has('editorial-enter')));
 const reduce = setup(); reduce.enter(); reduce.reduce(); assert(reduce.disconnected());
+const chapters = setup({ chapters: true }); chapters.enter();
+assert(chapters.items.every(x => x.classes.has('editorial-card')));
+assert(chapters.items[0].classes.has('editorial-left'));
+assert(chapters.items[1].classes.has('editorial-pop'));
+assert(chapters.items[2].classes.has('editorial-pop'));
+assert(chapters.items[3].classes.has('editorial-right'));
+chapters.off(); assert(chapters.items.every(x => !x.classes.has('editorial-enter')));
 console.log('PASS: entrance only once, no-observer fallback, saved motion off, live toggle and reduced-motion cancellation.');

@@ -169,13 +169,25 @@ body { font-kerning: normal; text-rendering: optimizeLegibility; }
 .site-footer-links a { font-weight: 500; text-underline-offset: 5px; }
 /* Entrance-only motion: visible by default; never hide content while waiting for JS. */
 .cover-copy:not(.editorial-enter),.fade-in:not(.editorial-enter),.skills .skill-item { animation: none; }
-.editorial-enter { animation: editorial-enter .65s cubic-bezier(.2,.7,.2,1) var(--entry-delay,0ms) both; }
-@keyframes editorial-enter { from { opacity: .35; translate: 0 16px; } to { opacity: 1; translate: 0 0; } }
+.editorial-enter { animation: editorial-enter .7s cubic-bezier(.2,.7,.2,1) var(--entry-delay,0ms) both; }
+.editorial-card { --entry-distance: 44px; --entry-bounce: -3px; }
+.editorial-left { --entry-x: calc(-1 * var(--entry-distance)); --entry-y: 10px; --entry-tilt: -1deg; }
+.editorial-right { --entry-x: var(--entry-distance); --entry-y: 10px; --entry-tilt: 1deg; }
+.editorial-pop { --entry-x: 0px; --entry-y: 42px; --entry-scale: .96; --entry-bounce: -6px; }
+@keyframes editorial-enter {
+  0% { opacity: .25; translate: var(--entry-x,0px) var(--entry-y,16px); rotate: var(--entry-tilt,0deg); scale: var(--entry-scale,1); }
+  72% { opacity: 1; translate: 0 var(--entry-bounce,0px); rotate: 0deg; scale: 1; }
+  100% { opacity: 1; translate: 0 0; rotate: 0deg; scale: 1; }
+}
+/* Only the animation can extend beyond the viewport; clip its horizontal overflow. */
+body { overflow-x: clip; }
 body:not(.motion-off) .cover-stamp { animation: stamp-arrive .7s .25s both; }
 body.interior-page:not(.motion-off) .page-header::after { animation: ink-arrive 1s .15s both; }
 @keyframes stamp-arrive { from { opacity: 0; scale: 1.18; rotate: 5deg; } to { opacity: 1; scale: 1; rotate: 0deg; } }
 @keyframes ink-arrive { from { opacity: 0; translate: 24px 8px; } to { opacity: .5; translate: 0 0; } }
 @media(max-width:760px) {
+  .editorial-card { --entry-distance: 24px; }
+  .editorial-pop { --entry-y: 30px; --entry-bounce: -4px; }
   .site-bar { min-height: 76px; }
   .site-brand-name { font-size: 27px; }
   .cover-copy h1 { font-size: clamp(94px,23vw,142px); letter-spacing: -.025em; }
