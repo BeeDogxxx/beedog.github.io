@@ -1,0 +1,46 @@
+{
+  "mode": "built-in image_gen",
+  "generations": 3,
+  "variants": 0,
+  "assets": [
+    {
+      "path": "images/comic/ui/energy-slash.png",
+      "hasAlpha": true,
+      "prompt": "Use case: stylized-concept\nAsset type: transparent PNG UI energy-slash accent, wide landscape around 1536x1024 pixels, behind buttons and chapter headings in a personal portfolio.\nPrimary request: one original dynamic sweeping pale-yellow lightning brush slash, horizontal motion mostly across the center with a few vermilion and cobalt accents and tiny ink splatters. Refined American comic graffiti and ability VFX aesthetic, premium editorial art.\nScene/backdrop: truly transparent background with alpha everywhere outside the painted mark.\nStyle/medium: crisp ink and cel-animation shapes, imperfect drybrush screenprint edges, energetic and confident handprinted quality.\nColor palette: main electric pale yellow #f2ef77, small vermilion #ef6448 and cobalt #6c89dd accents, subtle deep ink purple #211c38 outline if needed.\nComposition/framing: single wide slash, centered, full design visible and uncropped, generous transparent margins above and below.\nConstraints: no readable text, no logos, no franchise imagery, no photos, no 3D, no glow, no black background, no background rectangle, no checkerboard drawn into image. Output a genuinely transparent PNG.",
+      "source_dimensions": [
+        1774,
+        887
+      ],
+      "web_dimensions": [
+        768,
+        384
+      ]
+    },
+    {
+      "path": "images/comic/ui/graffiti-spark.png",
+      "hasAlpha": true,
+      "prompt": "Use case: stylized-concept\nAsset type: transparent PNG graffiti spark insignia, square around 1024x1024 pixels, small emblem on portfolio cards and modal rail.\nPrimary request: one compact angular four-point impact spark doodle. Deep purple ink outline around pale-yellow core, with a few small red and cobalt offset ink marks. Original comic ability emblem with handprinted irregularities.\nScene/backdrop: genuinely transparent alpha background outside the emblem.\nStyle/medium: refined American comic graffiti, crisp ink/cel-animation, imperfect drybrush and screenprint edge texture, premium energetic editorial art.\nColor palette: deep ink purple #211c38, electric pale yellow #f2ef77, vermilion #ef6448, cobalt #6c89dd.\nComposition/framing: one centered asymmetric four-point angular spark, generous clear transparent margins, compact readable silhouette at small size, no frame.\nConstraints: no readable text, no logos, no franchise imagery, no photos, no 3D, no glow, no background rectangle, no black background, no checkerboard drawn into image. Output a genuinely transparent PNG.",
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "web_dimensions": [
+        384,
+        384
+      ]
+    },
+    {
+      "path": "images/comic/ui/print-grain.jpg",
+      "hasAlpha": false,
+      "prompt": "Use case: stylized-concept\nAsset type: seamless square raster paper print texture, around 1024x1024 pixels, for a very low-opacity multiply layer across premium comic editorial UI surfaces.\nPrimary request: a completely flat warm-white/off-white paper print texture with extremely subtle monochrome fibers, dispersed fine ink speckle, and tiny irregular halftone dots. Very low contrast, visually quiet, evenly distributed paper texture.\nStyle/medium: uncoated printed paper grain, dry screenprint material, refined restrained texture.\nComposition/framing: edge-to-edge square texture only, consistent uniform distribution, seamlessly tileable in both axes, no focal area.\nColor palette: warm off-white base with barely visible pale gray monochrome fibers and sparse tiny gray ink specks.\nConstraints: no objects, no gradients, no vignette, no letters, no readable text, no logos, no photographs of paper on a surface, no shadows, no folds, no strong creases, no distinct stains, no borders, no 3D. Entire image must be flat texture.",
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "web_dimensions": [
+        512,
+        512
+      ]
+    }
+  ]
+}
