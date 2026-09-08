@@ -1,289 +1,79 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BeeDog 迷你小游戏 · 蜜蜂躲避击中技能">
-    <meta name="theme-color" content="#211c38">
-    <title>🎮 BEE QUEST · 蜜蜂小游戏 - BeeDog</title>
-    <link rel="stylesheet" href="css/style.css?v=20260709">
-    <link rel="stylesheet" href="css/effects.css?v=20260709">
-    <link rel="stylesheet" href="css/pixel-extras.css">
-    <link rel="stylesheet" href="css/outpost.css?v=20260908">
-    <link rel="stylesheet" href="css/site-system.css?v=20260908-ink-details">
-    <link rel="stylesheet" href="css/comic-details.css?v=20260908-ink-details">
-    <script src="js/site-shell.js?v=20260908-ink-details" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ONE MORE：反击时刻。踩准节奏，击碎目标，积攒能量释放清场。BeeDog 原创美漫街机小游戏。">
+<meta name="theme-color" content="#211c38">
+<title>ONE MORE · 反击时刻 — BeeDog</title>
+<link rel="stylesheet" href="css/site-system.css?v=20260908-ink-details">
+<link rel="stylesheet" href="css/comic-details.css?v=20260908-ink-details">
+<link rel="stylesheet" href="css/one-more-game.css?v=20260908-counter">
+<script src="js/site-shell.js?v=20260908-ink-details" defer></script>
 </head>
-<body class="interior-page">
-    <div class="score-hud" id="scoreHud"><span class="score-bee">🐝</span><span class="score-label">SCORE</span><span class="score-value" id="scoreValue">0000</span></div>
-    <div class="bee-cursor" id="beeCursor" aria-hidden="true">🐝</div>
-
-    <!-- SITE HEADER -->
+<body class="interior-page arcade-page">
+<a class="skip-link" href="#arcade">跳到游戏</a>
+<!-- SITE HEADER -->
 <header class="site-header"><div class="site-bar">
   <a class="site-brand" href="index.html" aria-label="BeeDog 首页"><span class="site-monogram" aria-hidden="true">B<span>·</span></span><span class="site-brand-name">BeeDog<small>STAY CURIOUS / KEEP GOING</small></span></a>
   <nav class="site-nav" id="site-navigation" aria-label="主导航"><a href="index.html">首页</a><a href="portfolio.html">作品</a><a href="blog.html">博客</a><a href="books.html">书架</a><a href="travel.html">旅行</a><a href="about.html">关于我</a><details class="site-more"><summary>更多 <span aria-hidden="true">＋</span></summary><div class="site-more-menu"><a href="now.html">NOW · 此刻</a><a href="game.html" aria-current="page">小游戏</a><a href="guestbook.html">留言板</a></div></details></nav>
   <div class="site-header-actions"><a class="site-contact" href="contact.html">建立联系 <span aria-hidden="true">↗</span></a><button class="site-menu-toggle" id="site-menu-toggle" aria-label="打开导航" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button></div>
 </div></header>
 <!-- /SITE HEADER -->
-
-    <section class="page-header">
-        <div class="container">
-            <h1 class="page-title">BEE QUEST</h1>
-            <p class="page-subtitle">MINI GAME · 蜜蜂冒险</p>
+<main class="arcade" id="arcade">
+  <div class="arcade-heading"><div><p class="arcade-kicker">BEEDOG ARCADE / 01</p><h1>反击时刻<span>ONE MORE.</span></h1></div><p class="arcade-tagline">再稳一点。<br>下一击，就是你的节奏。</p></div>
+  <section class="arcade-cabinet" aria-label="反击时刻小游戏">
+    <div class="arcade-hud">
+      <div class="arcade-score"><span>得分</span><strong id="om-score">00000</strong></div>
+      <div><span>最高纪录</span><strong id="om-best">00000</strong></div>
+      <div><span>剩余时间</span><strong id="om-time">45<span>s</span></strong></div>
+      <div><span>护盾</span><strong id="om-shield" aria-label="护盾 5 / 5">▰▰▰▰▰</strong></div>
+      <button id="om-pause" class="arcade-pause" disabled>暂停 <kbd>P</kbd></button>
+    </div>
+    <div class="arcade-layout">
+      <div class="arena-column">
+      <div class="rhythm-stage" id="om-stage" tabindex="-1" aria-label="三轨反击区域" aria-describedby="om-controls">
+        <div class="arena-top" aria-hidden="true"><span id="om-phase">FIND YOUR RHYTHM</span><span id="om-combo">COMBO / 00</span></div>
+        <div class="timing-band" aria-hidden="true"><span>HIT HERE</span></div>
+        <div class="rhythm-lanes">
+          <button class="rhythm-lane" data-lane="0" aria-label="左轨反击，A 或左方向键"><span class="lane-label"><kbd>A</kbd><small>左轨</small></span></button>
+          <button class="rhythm-lane" data-lane="1" aria-label="中轨反击，S 或下方向键"><span class="lane-label"><kbd>S</kbd><small>中轨</small></span></button>
+          <button class="rhythm-lane" data-lane="2" aria-label="右轨反击，D 或右方向键"><span class="lane-label"><kbd>D</kbd><small>右轨</small></span></button>
         </div>
-    </section>
-
-    <section style="padding: 40px 0 100px;">
-        <div class="container">
-            <div class="game-wrap">
-                <div class="game-header">
-                    <div class="g-stat">SCORE <span id="gScore">0000</span></div>
-                    <div class="g-stat">HI <span id="gHi">0000</span></div>
-                    <div class="g-stat">TIME <span id="gTime">30</span>s</div>
-                    <div class="g-stat">HP <span id="gHp">❤❤❤</span></div>
-                </div>
-                <div class="game-stage" id="gameStage">
-                    <div class="g-player" id="gPlayer">🐝</div>
-                    <div class="g-overlay" id="gOverlay">
-                        <h2>▶ PRESS START</h2>
-                        <p>
-                            用 <b>鼠标</b> 或 <b>手指</b> 控制蜜蜂,<br>
-                            撞击 <b>技能图标 📊 🎯 🤖 💡</b> +10 EXP,<br>
-                            躲开 <b>炸弹 💣</b> 和 <b>叉子 🍴</b>,<br>
-                            30 秒内拿高分!
-                        </p>
-                        <button class="btn btn-primary" id="gStart" style="margin-top:10px;">START</button>
-                        <div class="g-instructions">
-                            ← → 方向键 / 触屏 / 鼠标 均可 · 分数会同步到 SCORE HUD
-                        </div>
-                    </div>
-                </div>
-                <p style="margin-top:16px; text-align:center; font-family:var(--bd-mono); font-size:12px; color:var(--text-muted); letter-spacing:2px;">
-                    TIP · 连续击中同一图标会 <span style="color:var(--bee-yellow)">COMBO 加成</span>
-                </p>
-            </div>
+        <div class="note-layer" id="om-notes" aria-hidden="true"></div>
+        <div class="impact-layer" id="om-impacts" aria-hidden="true"></div>
+        <div class="hit-feedback" id="om-feedback" aria-hidden="true"></div>
+        <div class="arcade-screen" id="om-screen">
+          <p class="screen-eyebrow" id="om-screen-label">45 秒 / 三轨反击</p>
+          <h2 id="om-screen-title">ONE<br><em>MORE.</em></h2>
+          <p id="om-screen-copy">踩准判定线，打出你的连击。</p>
+          <div class="screen-rules" id="om-screen-rules"><span><i class="sample-target"></i>黄菱形 · 击中</span><span><i class="sample-trap">×</i>红叉 · 放过</span></div>
+          <div class="screen-result" id="om-result" hidden></div>
+          <button id="om-start" class="arcade-start">开始反击 <span aria-hidden="true">↗</span></button>
+          <small id="om-screen-hint">A / S / D 或点按轨道 · 提前出手也会扣盾</small>
         </div>
-    </section>
+      </div>
+      <div class="arena-controls">
+        <div class="burst-meter"><div class="burst-heading"><span>能量清场</span><b id="om-charge">0 / 6</b></div><div class="charge-cells" id="om-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <button id="om-burst" disabled>释放冲击 <kbd>SPACE</kbd></button>
+      </div></div>
+      <aside class="arcade-side">
+        <div class="side-chapter"><span>01 / THE RULE</span><h2>等它到线。<br>然后，出手。</h2></div>
+        <p id="om-controls">黄菱形进入横线区域时，按 <b>A / S / D</b> 或点按对应轨道。红色叉号是诱饵，让它通过。</p>
+        <div class="timing-legend"><span><b>PERFECT</b> 精准命中，能量 +1</span><span><b>GOOD</b> 有效命中，延续连击</span><span><b>MISS</b> 漏接或误击，护盾 −1</span></div>
 
-
-
-    <button class="secret-star" id="secretStar" aria-label="神秘星星">✦</button>
-    <div class="toast" id="toast"></div>
-
-    <script src="js/main.js"></script>
-    <script src="js/effects.js"></script>
-    <script>
-    (function(){
-        const stage = document.getElementById('gameStage');
-        const player = document.getElementById('gPlayer');
-        const overlay = document.getElementById('gOverlay');
-        const btnStart = document.getElementById('gStart');
-        const elScore = document.getElementById('gScore');
-        const elHi    = document.getElementById('gHi');
-        const elTime  = document.getElementById('gTime');
-        const elHp    = document.getElementById('gHp');
-
-        const TARGETS = ['📊','🎯','🤖','💡'];
-        const ENEMIES = ['💣','🍴','⚡'];
-
-        let W=0,H=0, px=0,py=0, tx=0,ty=0;
-        let running=false, score=0, hp=3, timeLeft=30;
-        let lastTarget=null, combo=1;
-        let entities=[];
-        let tickId=null, timerId=null, spawnAcc=0;
-        let hi = parseInt(localStorage.getItem('beedog_game_hi')||'0',10);
-        elHi.textContent = String(hi).padStart(4,'0');
-
-        const fit = () => {
-            const r = stage.getBoundingClientRect();
-            W = r.width; H = r.height;
-            if (!running) { px=W/2; py=H*0.8; tx=px; ty=py; positionPlayer(); }
-        };
-        window.addEventListener('resize', fit);
-
-        const positionPlayer = () => {
-            player.style.left = (px-20) + 'px';
-            player.style.top  = (py-14) + 'px';
-        };
-
-        stage.addEventListener('pointermove', e => {
-            if (!running) return;
-            const r = stage.getBoundingClientRect();
-            tx = e.clientX - r.left;
-            ty = e.clientY - r.top;
-        });
-        stage.addEventListener('touchmove', e => {
-            if (!running || !e.touches[0]) return;
-            const r = stage.getBoundingClientRect();
-            tx = e.touches[0].clientX - r.left;
-            ty = e.touches[0].clientY - r.top;
-            e.preventDefault();
-        }, {passive:false});
-        window.addEventListener('keydown', e => {
-            if (!running) return;
-            if (e.key==='ArrowLeft')  tx = Math.max(20, px-40);
-            if (e.key==='ArrowRight') tx = Math.min(W-20, px+40);
-            if (e.key==='ArrowUp')    ty = Math.max(20, py-40);
-            if (e.key==='ArrowDown')  ty = Math.min(H-20, py+40);
-        });
-
-        btnStart.addEventListener('click', start);
-
-        function start() {
-            fit();
-            running = true;
-            score = 0; hp = 3; timeLeft = 30; combo=1; lastTarget=null;
-            entities.forEach(e=>e.el.remove()); entities=[];
-            overlay.classList.add('hidden');
-            updateHud();
-            spawnAcc = 0;
-            timerId = setInterval(() => {
-                timeLeft--;
-                elTime.textContent = timeLeft;
-                if (timeLeft<=0) gameOver('TIME UP');
-            }, 1000);
-            tickId = requestAnimationFrame(loop);
-        }
-
-        let lastT=0;
-        function loop(t) {
-            if (!running) return;
-            const dt = Math.min(40, t - (lastT||t)); lastT=t;
-            // 玩家插值
-            px += (tx - px) * 0.22;
-            py += (ty - py) * 0.22;
-            px = Math.max(20, Math.min(W-20, px));
-            py = Math.max(20, Math.min(H-14, py));
-            positionPlayer();
-
-            // 生成实体
-            spawnAcc += dt;
-            if (spawnAcc > 700) {
-                spawnAcc = 0;
-                spawn();
-            }
-
-            // 更新
-            for (let i=entities.length-1;i>=0;i--) {
-                const e = entities[i];
-                e.x += e.vx * dt/16;
-                e.y += e.vy * dt/16;
-                e.el.style.left = (e.x-16)+'px';
-                e.el.style.top  = (e.y-16)+'px';
-                if (e.y > H+30 || e.x < -30 || e.x > W+30) {
-                    e.el.remove(); entities.splice(i,1); continue;
-                }
-                // 碰撞
-                const dx = e.x - px, dy = e.y - py;
-                if (dx*dx + dy*dy < 28*28) {
-                    if (e.kind === 'target') {
-                        hitTarget(e);
-                    } else {
-                        hitEnemy(e);
-                    }
-                    e.el.remove(); entities.splice(i,1);
-                }
-            }
-
-            tickId = requestAnimationFrame(loop);
-        }
-
-        function spawn() {
-            const kind = Math.random() < 0.6 ? 'target' : 'enemy';
-            const e = document.createElement('div');
-            e.className = kind === 'target' ? 'g-target' : 'g-enemy';
-            const icon = kind === 'target'
-                ? TARGETS[Math.floor(Math.random()*TARGETS.length)]
-                : ENEMIES[Math.floor(Math.random()*ENEMIES.length)];
-            e.textContent = icon;
-            const x = 30 + Math.random()*(W-60);
-            const y = -30;
-            e.style.left = (x-16)+'px';
-            e.style.top  = (y-16)+'px';
-            stage.appendChild(e);
-            entities.push({ el:e, kind, icon, x, y, vx: (Math.random()-0.5)*1.2, vy: 1.8 + Math.random()*2.2 });
-        }
-
-        function hitTarget(e) {
-            if (e.icon === lastTarget) { combo = Math.min(5, combo+1); }
-            else { combo = 1; lastTarget = e.icon; }
-            const gain = 10 * combo;
-            score += gain;
-            burstParticles(e.x, e.y, '#FFD23F');
-            popText(e.x, e.y, '+'+gain + (combo>1 ? ' x'+combo : ''));
-            updateHud();
-            window.BeeDogAddScore && window.BeeDogAddScore(1);
-        }
-        function hitEnemy(e) {
-            hp--;
-            combo = 1; lastTarget=null;
-            burstParticles(e.x, e.y, '#FF3B3B');
-            popText(e.x, e.y, '-1 HP');
-            stage.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],{duration:180});
-            updateHud();
-            if (hp<=0) gameOver('GAME OVER');
-        }
-        function burstParticles(x,y,color){
-            for (let i=0;i<8;i++){
-                const p = document.createElement('div');
-                p.className = 'g-particle';
-                p.style.background = color;
-                p.style.left = (x-3)+'px';
-                p.style.top  = (y-3)+'px';
-                stage.appendChild(p);
-                const ang = Math.random()*Math.PI*2;
-                const dist = 20 + Math.random()*30;
-                p.animate([
-                    { transform:'translate(0,0)', opacity:1 },
-                    { transform:`translate(${Math.cos(ang)*dist}px, ${Math.sin(ang)*dist}px)`, opacity:0 }
-                ], { duration: 500, easing:'ease-out' }).onfinish = () => p.remove();
-            }
-        }
-        function popText(x,y,txt){
-            const t = document.createElement('div');
-            t.textContent = txt;
-            t.style.cssText = `position:absolute;left:${x}px;top:${y}px;color:var(--bee-yellow);font-family:var(--bd-mono);font-size:12px;text-shadow:2px 2px 0 #000;pointer-events:none;z-index:5;`;
-            stage.appendChild(t);
-            t.animate([
-                {transform:'translate(-50%,0)', opacity:1},
-                {transform:'translate(-50%,-36px)', opacity:0}
-            ], {duration:700, easing:'ease-out'}).onfinish = () => t.remove();
-        }
-
-        function updateHud() {
-            elScore.textContent = String(score).padStart(4,'0');
-            elHp.textContent = '❤'.repeat(Math.max(0,hp)) + '<span style="opacity:.3">'+'❤'.repeat(Math.max(0,3-hp))+'</span>';
-            elHp.innerHTML = '❤'.repeat(Math.max(0,hp)) + '<span style="opacity:.3">'+'❤'.repeat(Math.max(0,3-hp))+'</span>';
-        }
-
-        function gameOver(reason) {
-            running = false;
-            cancelAnimationFrame(tickId);
-            clearInterval(timerId);
-            entities.forEach(e=>e.el.remove()); entities=[];
-            if (score > hi) {
-                hi = score;
-                localStorage.setItem('beedog_game_hi', String(hi));
-                elHi.textContent = String(hi).padStart(4,'0');
-                window.BeeDogRain && window.BeeDogRain(30);
-                window.BeeDogToast && window.BeeDogToast('★ NEW HI SCORE ' + hi);
-            }
-            overlay.innerHTML = `
-                <h2>${reason}</h2>
-                <p>最终得分 <b style="color:var(--bee-yellow-bright)">${String(score).padStart(4,'0')}</b><br>
-                   最高记录 ${String(hi).padStart(4,'0')}</p>
-                <button class="btn btn-primary" id="gRestart">RESTART</button>
-                <div class="g-instructions">击中技能 +10 EXP · 连击加成最高 x5</div>
-            `;
-            overlay.classList.remove('hidden');
-            document.getElementById('gRestart').addEventListener('click', start);
-        }
-
-        fit();
-    })();
-    </script>
+        <p class="arcade-small">6 次精准命中蓄满能量，可清除画面内所有目标与诱饵。<br>连续命中提升倍率，最高 ×4。<br>离开页面会自动暂停。纪录只保存在此浏览器。</p>
+      </aside>
+    </div>
+    <div class="arcade-bottom"><span>STAY SHARP. KEEP GOING.</span><span>原创玩法实验 / BeeDog</span></div>
+  </section>
+  <p id="om-announcement" class="arcade-sr" role="status" aria-live="polite"></p>
+  <noscript><p>小游戏需要启用 JavaScript。你仍然可以浏览<a href="portfolio.html">项目作品</a>和<a href="blog.html">博客文章</a>。</p></noscript>
+</main>
 <!-- SITE FOOTER -->
 <footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-identity"><a href="index.html">BeeDog <span>＋</span></a><span>© 2026 苏笔辉</span></div><nav class="site-footer-links" aria-label="页脚导航"><a href="now.html">NOW</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a><a href="contact.html">联系我</a></nav><button class="site-motion" id="motion-toggle" aria-pressed="false">动态效果 <span id="motion-label">开启</span><i aria-hidden="true"></i></button></div></footer>
 <!-- /SITE FOOTER -->
+<script src="js/one-more-engine.js?v=20260908-counter"></script>
+<script src="js/one-more-game.js?v=20260908-counter"></script>
 </body>
 </html>
