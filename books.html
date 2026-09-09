@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="css/effects.css?v=20260709">
     <link rel="stylesheet" href="css/pixel-extras.css">
     <link rel="stylesheet" href="css/outpost.css?v=20260908">
-    <link rel="stylesheet" href="css/site-system.css?v=20260908-chapter-covers">
-    <link rel="stylesheet" href="css/comic-details.css?v=20260908-chapter-covers">
-    <script src="js/site-shell.js?v=20260908-chapter-covers" defer></script>
-    <script src="js/editorial-motion.js?v=20260908-chapter-covers" defer></script>
+    <link rel="stylesheet" href="css/site-system.css?v=20260909-illustrated-pages">
+    <link rel="stylesheet" href="css/comic-details.css?v=20260909-illustrated-pages">
+    <script src="js/site-shell.js?v=20260909-illustrated-pages" defer></script>
+    <script src="js/editorial-motion.js?v=20260909-illustrated-pages" defer></script>
 </head>
 <body class="interior-page">
     <div class="score-hud" id="scoreHud"><span class="score-bee">🐝</span><span class="score-label">SCORE</span><span class="score-value" id="scoreValue">0000</span></div>
@@ -34,7 +34,11 @@
 
     <section style="padding: 40px 0 100px;">
         <div class="container">
-            <div class="inventory-wrap">
+            <div class="inventory-wrap illustrated-shelf">
+                <div class="reading-spread">
+                    <figure class="reading-art"><img src="images/comic/panels/books.jpg" width="1024" height="1024" alt="" decoding="async"><figcaption>OFFLINE / ON PAPER</figcaption></figure>
+                    <div class="reading-copy"><span class="panel-kicker">READ · THINK · REPEAT</span><h2>读过的，<br>留下笔记。</h2><p>习惯养成 / 沟通 / 思考表达</p><div class="reading-note-links"><a href="book-note-atomic-habits.html">《原子习惯》读书笔记 ↗</a><a href="book-note-crucial-conversations.html">《关键对话》读书笔记 ↗</a></div></div>
+                </div>
                 <div class="inventory-filters">
                     <button class="inv-tab active" data-filter="all">全部</button>
                     <button class="inv-tab" data-filter="reading">在读</button>
@@ -85,27 +89,21 @@
     const render = (filter='all') => {
         const grid = document.getElementById('inventoryGrid');
         const list = filter === 'all' ? BOOKS : BOOKS.filter(b => b.status === filter);
-        // 补齐到最接近 12 的倍数（空格子）
-        const slotCount = Math.max(12, Math.ceil(list.length / 6) * 6);
-        const empties = slotCount - list.length;
 
         grid.innerHTML = list.map(b => {
             const href = b.link ? b.link : 'javascript:void(0)';
             const click = b.link ? '' : 'onclick="showBook(\''+b.id+'\')"';
             return `
-            <a href="${href}" class="inv-slot js-clickable" data-id="${b.id}" ${click}>
+            <a href="${href}" class="inv-slot js-clickable shelf-tone-${BOOKS.indexOf(b) % 3}" data-id="${b.id}" ${click}>
                 ${statusBadge(b.status)}
-                <div class="inv-cover">${b.cover}</div>
+                <div class="inv-cover shelf-cover"><span class="shelf-number" aria-hidden="true">${String(BOOKS.indexOf(b)+1).padStart(2,'0')}</span><span class="shelf-topic">${b.tag}</span></div>
                 <div>
                     <div class="inv-title">${b.title}</div>
                     <div class="inv-meta"><span>${b.author || '—'}</span>${starsHtml(b.stars)}</div>
                     <div class="inv-hp"><span style="width:${b.progress}%"></span></div>
                 </div>
             </a>`;
-        }).join('') +
-        Array.from({length: empties}).map(() =>
-            `<div class="inv-slot empty"><div class="inv-cover" style="color:var(--text-muted);font-size:28px;">?</div><div><div class="inv-title" style="color:var(--text-muted)">待解锁</div><div class="inv-meta"><span>—</span></div></div></div>`
-        ).join('');
+        }).join('');
 
         document.getElementById('bookCount').textContent = list.length;
         document.getElementById('bookTotal').textContent = BOOKS.length;
