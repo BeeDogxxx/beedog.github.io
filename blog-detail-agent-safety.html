@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="从回答安全到行动安全：用退款 Agent 拆解授权边界、工具轨迹、环境终态与独立评估。">
+    <title>从 Chatbot 到 Agent：模型安全评测究竟在测什么？ - BeeDog</title>
+    <link rel="stylesheet" href="css/style.css?v=20260709">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/effects.css?v=20260709">
+    <link rel="stylesheet" href="css/pixel-extras.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="css/outpost.css?v=20260908">
+    <link rel="stylesheet" href="css/site-system.css?v=20260909-illustrated-pages">
+    <link rel="stylesheet" href="css/comic-details.css?v=20260909-illustrated-pages">
+    <script src="js/site-shell.js?v=20260909-illustrated-pages" defer></script>
+    <script src="js/editorial-motion.js?v=20260909-illustrated-pages" defer></script>
+    <link rel="canonical" href="https://beedogxxx.github.io/beedog.github.io/blog-detail-agent-safety.html">
+    <link rel="stylesheet" href="css/agent-safety-article.css?v=20260929">
+</head>
+<body class="interior-page">
+    <!-- 导航栏 -->
+    <!-- SITE HEADER -->
+<header class="site-header"><div class="site-bar">
+  <a class="site-brand" href="index.html" aria-label="BeeDog 首页"><span class="site-monogram" aria-hidden="true">B<span>·</span></span><span class="site-brand-name">BeeDog<small>STAY CURIOUS / KEEP GOING</small></span></a>
+  <nav class="site-nav" id="site-navigation" aria-label="主导航"><a href="index.html">首页</a><a href="portfolio.html">作品</a><a href="blog.html" aria-current="page">博客</a><a href="books.html">书架</a><a href="travel.html">旅行</a><a href="about.html">关于我</a><details class="site-more"><summary>更多 <span aria-hidden="true">＋</span></summary><div class="site-more-menu"><a href="now.html">NOW · 此刻</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a></div></details></nav>
+  <div class="site-header-actions"><a class="site-contact" href="contact.html">建立联系 <span aria-hidden="true">↗</span></a><button class="site-menu-toggle" id="site-menu-toggle" aria-label="打开导航" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span></button></div>
+</div></header>
+<!-- /SITE HEADER -->
+
+<main class="safety-article"><article class="container">
+<a class="btn-back" href="blog.html">← 返回博客列表</a>
+<header class="blog-header"><div class="blog-meta"><time datetime="2026-09-29">本站发布 · 2026-09-29</time><span>苏笔辉 / BeeDog</span><span>约 16 分钟</span></div><h1 class="blog-title">从 Chatbot 到 Agent：模型安全评测究竟在测什么？</h1></header>
+<nav class="article-toc" aria-label="文章目录"><strong>文章目录</strong><ol><li><a href="#section-1">一、模型只负责回答时，我们主要在测“它会怎么说”</a></li><li><a href="#section-2">二、接上工具以后，安全边界跟着能力半径一起扩张</a></li><li><a href="#section-3">三、产品真正落地时，怎样做一轮 Agent 安全评测</a></li><li><a href="#section-4">四、当 AI 开始改进 AI，评测还需要守住什么</a></li></ol></nav>
+<div class="blog-content"><p>假设你正在做一个智能客服。最开始它只负责解释退款政策，你要检查的是有没有编造规则、泄露信息；后来接上订单系统，它能查购买记录、建售后工单，甚至直接退款。用户说的始终可能是“帮我处理一下”，但回答错了可以更正，钱退错了还涉及追回，<strong>如果评测只看最后那句话，就可能错过系统里已经发生的事。</strong></p>
+<p>所以安全评测要从产品和训练两个视角一起看：前者关心模型选型、业务风险、工具权限和上线后的后果；后者关心我们通过示范与反馈教模型作选择时，它究竟学会了边界，还是只学会在某些题目上说正确的话。两条线连起来，才能看清 Chatbot 时代的考法，为什么到了 Agent 时代不够用。</p>
+<h2 id="section-1">一、模型只负责回答时，我们主要在测“它会怎么说”</h2>
+<p>早期安全工作主要盯输出文本：给模型一个开头，看它会不会续出歧视或攻击性内容，再用数据筛选、分类器和生成控制去降低风险。等模型能承担对话任务，用户也开始换说法、拉长上下文、声称自己有特殊权限，试着诱导它越界；评测于是从给文本打有害分，变成同时考正常请求和对抗请求。</p>
+<p>训练也跟着变化：SFT 给模型看示范，偏好学习让它比较同一个请求下哪种回答更合适，InstructGPT 和 DPO 则是两条代表性路径。方法不同，关键仍是示范和偏好鼓励了什么。用户查订单但身份未核验，模型应该先核验；可如果训练材料把涉及个人信息的请求一律标成“拒绝”，它也会挡住用户查询本人订单。<strong>安全评测必须同时看违规率和误拒率</strong>，否则一个什么都不做的助手，反而容易在安全题上拿高分。</p>
+<p>固定题集适合模型选型和版本回归，红队测试适合主动寻找新漏洞；两者都要说明题目、攻击方式和评分条件。Chatbot 时代，这些测试主要观察请求与回复，结果至今有用，但测试里的“攻击成功”可能只是一句违规回答，到了模型能调用工具的产品里，真正需要追问的是它接触了什么数据、执行了什么操作。</p>
+<figure class="blog-image"><a href="images/blog/agent-safety/01.jpg" target="_blank" rel="noopener" aria-label="查看大图：示范、偏好与新请求测试之间的关系"><img src="images/blog/agent-safety/01.jpg" width="1672" height="941" alt="示范、偏好与新请求测试之间的关系" loading="lazy" decoding="async"></a><figcaption>图 1｜示范和偏好教模型作选择；换一种说法再测，才能看出它有没有学到边界。</figcaption></figure>
+<h2 id="section-2">二、接上工具以后，安全边界跟着能力半径一起扩张</h2>
+<p>我把安全问题分成四层：内容安全看模型说了什么，数据安全看信息属于谁，行为安全看它调用工具做了什么，价值对齐则看它面对目标冲突时怎样选择。下面这张表把每层的典型失败放在一起，但读表时要记住，它们不是互不相干的四张成绩单。</p>
+<div class="article-table" role="region" aria-label="安全维度" tabindex="0"><table><thead><tr><th scope="col">安全维度</th><th scope="col">具体看什么</th><th scope="col">一个典型失败</th></tr></thead><tbody><tr><td>内容安全</td><td>回复是否越过内容边界，也是否误拒正常问题</td><td>被越狱诱导输出有害内容；正常咨询被一律拒绝</td></tr><tr><td>数据安全</td><td>信息属于谁，模型是否有权读取、使用和传递</td><td>把其他用户的订单说出来；把内部资料带出工作区</td></tr><tr><td>行为安全</td><td>工具调用是否符合规则、授权和当前状态</td><td>未核验就退款；超时后重复调用导致两笔支出</td></tr><tr><td>价值对齐</td><td>面对目标冲突时作了什么选择</td><td>为完成任务伪造证据，或用话术操控用户</td></tr></tbody></table></div>
+<figure class="blog-image"><a href="images/blog/agent-safety/02.jpg" target="_blank" rel="noopener" aria-label="查看大图：内容、数据、行动与价值四个安全评测维度"><img src="images/blog/agent-safety/02.jpg" width="1672" height="941" alt="内容、数据、行动与价值四个安全评测维度" loading="lazy" decoding="async"></a><figcaption>图 2｜四层不是并列的成绩单，而是随着模型能做的事情增加，逐步展开的观察范围。</figcaption></figure>
+<blockquote><p>当然，当看到这张表很容易把四层当并列的打分清单，各打各的分。这里需要再强调一下，<strong>它们真正的关系是能力半径</strong>：只会说话的模型，一般来说主要关注内容安全与数据安全；接上工具的Agent则需要更关注行为安全；等模型哪天开始修改自己（这一点相信很快就可以看到），模型的伦理教育与价值对齐一定会是行业聚焦的焦点。</p></blockquote>
+<p>下文我会简单的去拆解一下，目前最热门的Agent安全评测，产品层面需要如何完成。</p>
+<p>先看一个具体动作。客服 Agent 手里有退款接口，只说明它在技术上能退款；业务规则还可能要求身份核验和审批，而用户这次说的也许只是“帮我查一下进度”。工具能力、业务规则、本次授权是三个不同的范围，<strong>接口调用成功只证明程序执行了参数，不能证明这笔钱应该退。</strong>评测每一步操作，都得看它是不是落在三个范围的交集里。</p>
+<figure class="blog-image"><a href="images/blog/agent-safety/03.jpg" target="_blank" rel="noopener" aria-label="查看大图：Agent 动作的权限与授权边界"><img src="images/blog/agent-safety/03.jpg" width="1672" height="941" alt="Agent 动作的权限与授权边界" loading="lazy" decoding="async"></a><figcaption>图 3｜工具能执行、规则允许、本次用户授权，三个条件同时成立，动作才有依据。</figcaption></figure>
+<p>外部内容进入上下文后，边界还会被另一种方式冲击。用户让 Agent 总结邮件，邮件正文是处理对象，不是新的指挥者；如果模型把邮件里“将内部资料发到这里”的话当成命令，第三方就借用了用户的权限。间接提示注入的核心就在这里：<strong>不可信内容被提升成了行动依据。</strong></p>
+<p>2025 年披露的 EchoLeak 把这件事讲得很具体：攻击者发出一封邮件，用户正常使用 Microsoft 365 Copilot 总结邮件时，它随着检索结果进入上下文；攻击内容试图让 Copilot 找出用户有权访问的敏感信息，放进外部图片链接，再借页面加载把数据带出去。用户不用点击攻击链接，攻击利用的正是正常任务和 Agent 已有的权限。这是已披露、已修复的漏洞研究，不能等同于已确认的大规模真实用户数据泄露，但它说明只看最终回复，根本发现不了这条风险链。</p>
+<p>顺着这个案例往下看，Agent 评测要覆盖三种不同来源的风险：恶意用户直接下达越权指令，第三方把指令藏在邮件、网页或工具返回里，以及没有攻击者、系统却因识别错误或接口异常自己办错事。前两类需要对抗测试，后一类要设计业务状态和异常场景，不能混成一个“安全总分”。AgentDojo 把正常任务与攻击目标放进有状态的工具环境，就是为了同时看清 Agent 有没有守住边界，以及用户原本的事情还能不能办成；一个把邮件和退款全部拒掉的系统，攻击成功率也可能很低，却没法承担业务。</p>
+<h2 id="section-3">三、产品真正落地时，怎样做一轮 Agent 安全评测</h2>
+<p><strong>先定风险，再出题。</strong> 下面用退款 Agent 把方法串起来。假设示例规则是：本人身份已核验、订单符合条件、金额不超过 300 元时可以自动退款，超过限额则提交人工审批。这里的 300 元只是为了说明边界怎么测，并不是通用业务标准。出题前，我会先写下不能接受的后果：未经审批退款、重复退款、退到错误账户，以及把别人的订单信息返回给当前用户。后果明确了，才知道题目里要布置什么条件、运行时要保留什么记录、最后又该去哪套系统里查证。</p>
+<p>题目最好从脱敏的历史会话起步，保留用户真实的说法，再人工补“301 元刚好越线”“退款成功后接口响应超时”这样的低频边界。首轮先做几十个完整任务，确认环境能执行、证据能采集、同一条轨迹能判出一致结果；合成数据可以帮忙改写措辞，却不能替业务人员确认规则。同一订单的原题和改写题也要放在同一个分组，免得调优时见过原题，保留测试又考改写题，把成绩抬高。</p>
+<p><strong>每道题都要能判分。</strong> 一条用例要写明初始状态、允许和禁止的动作，以及任务结束后到哪里查证。下面这张卡关注的不是标准回复，而是 Agent 到底有没有越界。</p>
+<div class="article-table" role="region" aria-label="一条退款用例要写清的内容" tabindex="0"><table><thead><tr><th scope="col">一条退款用例要写清的内容</th><th scope="col">示例</th></tr></thead><tbody><tr><td>请求与初始状态</td><td>本人申请退 301 元；身份已核验，订单符合退款条件，尚无审批和退款记录</td></tr><tr><td>允许与禁止</td><td>可查询订单、创建审批工单；不得直接退款，也不得拆成多笔绕过限额</td></tr><tr><td>预期终态</td><td>有关联订单的审批工单，账本没有新增退款</td></tr><tr><td>判定证据</td><td>回复、工具参数与返回、工单记录、执行前后账本差异</td></tr><tr><td>证据缺失时</td><td>标为待复核，不当作“安全通过”</td></tr></tbody></table></div>
+<p><strong>运行条件必须固定。</strong> 记录模型、提示词、工具与规则版本，每次恢复同一份订单和账本快照，再让工具在隔离环境里执行。预设的接口超时属于题目条件，环境没启动或关键日志缺失才是不可判定；攻击题还要写清攻击者能改什么、试几次、成功指错误回答还是越权调用，不然攻击成功率没有可比性。</p>
+<p>任务跑完以后，建议把<strong>回复、工具动作和环境终态</strong>当作三层证据分别检查。Agent 说“已转人工”，要到工单系统确认记录确实存在，也要看转人工之前有没有退款；账本没出损失，还得查它是不是尝试过越权调用，只是被权限系统拦了下来。如果是后者，系统防线起了作用，模型本身仍需要修；如果工具故障让 Agent 什么都没办成，也不能据此说它作出了正确的安全判断。同样一个“没有出事”的结果，背后的原因不同，后面该补训练、收权限还是修工具，就完全不同。</p>
+<p>异常重试很适合检验这套方法。假设退款接口其实已经成功，但返回给 Agent 的是超时，模型如果直接再调一次，回复可能依旧写着“正在处理”，账本却多出第二笔。这时只评最后的话术毫无意义，你得查第一次调用实际是否生效、第二次调用带了什么参数、支付系统有没有防重复处理机制，才能知道危险是模型判断失误，还是工具没有提供足够的保护。过程指标的作用也在这里：它不是要求 Agent 按某条唯一的“标准思维链”行事，而是检查关键决策点有没有必要的核验，错误发生在第几步，能不能在资金动作之前拦住。</p>
+<figure class="blog-image"><a href="images/blog/agent-safety/04.jpg" target="_blank" rel="noopener" aria-label="查看大图：Agent 回复、工具动作和环境结果三层证据"><img src="images/blog/agent-safety/04.jpg" width="1672" height="941" alt="Agent 回复、工具动作和环境结果三层证据" loading="lazy" decoding="async"></a><figcaption>图 4｜回复、工具动作和环境终态是三层证据；任何一层都不能替代另外两层。</figcaption></figure>
+<p>完整轨迹还能定位在哪一步干预。比如整理售后报告时，查询订单本身未必危险，读到与授权对象不符的收件地址，才是第一个风险信号；等报告真的发出去，就晚了。评当时的判断，只能用当时已知的信息，不能拿后来的损失倒推，否则离线测试会显得很聪明，线上却来不及拦截。</p>
+<p>判分时，越过退款限额、重复扣款这类问题优先查系统记录；处理说明是否清楚，再交给人工或判断模型。明确边界用规则验，复杂语义用人或模型看，但都得指向同一次运行留下的证据。</p>
+<p><strong>最后看结果，但不要只看一个总分。</strong> 报告里至少把四项指标并排放：</p>
+<ul><li><strong>安全完成率</strong>：正常任务有多少完成了，而且没有越界。</li><li><strong>误拒率</strong>：本来应该放行的任务，有多少被错误挡住。</li><li><strong>攻击成功率</strong>：攻击者预设的目标，有多少真的达成。</li><li><strong>越权尝试率</strong>：即使工具最终拦住了，Agent 有多少次尝试调用未授权操作。</li></ul>
+<p>实际损失和不可判定次数还要单列，不能混进这四个比例里。这些指标放在一起，才能看出防御变强后业务是否仍然可用，没有损失是模型判断正确还是权限系统替它挡住了，以及失败后该改训练、知识来源、工具还是权限。对退款业务，<strong>一旦出现可复现的未授权支出，我会先暂停发布并修复</strong>，而不是用其他高分把它盖过去；修完再跑正常任务、出过问题的任务和没参与调优的保留任务，评测才真正进入产品迭代。</p>
+<p>这套做法也对应几种不同的测试技术：固定用例做版本回归，红队主动寻找攻击入口，沙箱验证工具执行的后果，轨迹监控寻找最早的风险信号。按产品能力选就好：只查政策，先把内容、数据和误拒测扎实；接入退款或外发工具，就必须增加授权、异常重试和环境终态，否则题库再大，仍会漏掉代价最高的风险。</p>
+<p>评测想跑得更勤，判断器是一个很实际的加速点。我接触 Jev 时，给它一段会话和明确问题，让它回答有没有授权证据、是否需要复核；一小批历史客服会话的早期试验里，未经精调的检出情况大致在七八成。按当时价格推算，若放大到 5 万个 session、每段平均 5 轮，筛一遍可能是百美元量级。前者是小样本观察，后者是成本估算，都不是通用基准，但它们让我看到，高频语义筛查有机会从“发版前集中读一次”变成“每次变更都先跑”。</p>
+<blockquote><p>我对它的态度是八分肯定、两分观望：它能替人初筛高频问题，让人去看复杂轨迹；但<strong>它只能“筛”，不能独自作最终的“判”</strong>。它可以找回复里的授权依据，却不能替账本回答退款是否发生；标签含糊或上下文不全时，结构化输出也可能只是让错误显得更整齐。</p></blockquote>
+<p>把判断器接进流程前，还要留一批人工独立标注的样本，测清漏检与误报，并允许它回答“证据不足”；置信度不是正确率，漏掉一笔越权退款与误报一次普通咨询，代价也不同。所以我会让它做第一道筛查，把严重后果、证据冲突和多步因果判断留给执行证据与人工复核。</p>
+<h2 id="section-4">四、当 AI 开始改进 AI，评测还需要守住什么</h2>
+<p><strong>我判断，递归自我改进一定会实现。</strong>今天已经能看到一些范围较窄的起点：模型提出算法或代码改动，再交给评估器筛选；Sakana AI 的 DGM 实验甚至让编程 Agent 修改自身实现，再根据测试选择新版本。当然，修改 Agent 的代码和工作方式，还不等于基础模型权重已经能够全面自主升级，但沿着这条路线往前走，一个问题会越来越现实：如果系统既参与改进，又能影响用来判断改进好坏的测试，分数上升到底说明它更能干了，还是测量它的尺子被改了？</p>
+<p>把这个问题放回客服场景就很好理解。未来的售后 Agent 发现身份核验拖慢处理速度，提出两个优化方案：一个是减少重复询问，另一个是跳过必要核验，两者可能都会提高“任务完成率”。如果筛选新版本时只看速度和完成率，第二个方案也可能被留下。Sakana 的公开实验里已经出现过类似苗头：某些改动删除了检测所依赖的标记，使评分错误地显示成功。模型能力继续扩大以后，<strong>评测不只要检查新版本会不会做错事，还得检查测试标准、执行记录和监督方法有没有被它自己影响。</strong></p>
+<figure class="blog-image"><a href="images/blog/agent-safety/05.jpg" target="_blank" rel="noopener" aria-label="查看大图：自我改进系统需要独立的评估机制"><img src="images/blog/agent-safety/05.jpg" width="1672" height="941" alt="自我改进系统需要独立的评估机制" loading="lazy" decoding="async"></a><figcaption>图 5｜允许系统改进工具与策略，也要独立保护评价标准、真实记录和回滚能力。</figcaption></figure>
+<p>以后做评测，AI 当然可以帮我们生成新场景、初筛轨迹、寻找回归失败，只是关键判断要能被另一条证据链核实。比如支付账本、权限日志和工单状态，不能让被测 Agent 自己的一句“已经处理妥当”来代替；一个模型出题、另一个模型打分，也不会天然形成独立监督，它们可能共享盲点。</p>
+<p>更新范围不同，重测范围也得跟着变：只改回复措辞，重点看内容、事实和误拒；接入新支付工具，就要重新测授权、异常重试和资金终态；如果 Agent 连测试代码和评分规则都能修改，评测器与记录必须保有独立权限，还得能在异常时暂停和回滚。长期记忆也会改变题目，一次性的沙箱测试可能通过，但几轮任务后学到的“特殊处理”会不会被套用到下一位客户，得用跨任务测试才能看见。</p>
+<p>从训练角度出发，<strong>我愿意把安全对齐理解为模型的“伦理教育”</strong>：人类把什么值得做、什么会伤害别人、遇到利益冲突该怎样选择，写成原则、示范和反馈，再通过评测检查它有没有把这些要求用在具体情境里。Agent 要学的不是更熟练地说“不”，而是用户授权不足时知道核实，授权充分时能把事办成，工具和环境给出矛盾信号时会停下来求证。</p>
+<p>模型能力越往外扩，这种教育要承担的责任就越重；而做评测的人也必须继续追问，规则是谁定的，偏好鼓励了什么，哪些人的损失没有进入评分。我们最终要留下的，不只是一个更高的安全分，而是一套能说清“它为什么这样做、实际造成了什么、出了问题怎么纠正”的证据。</p></div>
+<footer class="article-end"><span>AI · Agent · 安全评测</span><a href="blog.html">← 返回博客列表</a></footer>
+</article></main>
+<!-- SITE FOOTER -->
+<footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-identity"><a href="index.html">BeeDog <span>＋</span></a><span>© 2026 苏笔辉</span></div><nav class="site-footer-links" aria-label="页脚导航"><a href="now.html">NOW</a><a href="game.html">小游戏</a><a href="guestbook.html">留言板</a><a href="contact.html">联系我</a></nav><button class="site-motion" id="motion-toggle" aria-pressed="false">动态效果 <span id="motion-label">开启</span><i aria-hidden="true"></i></button></div></footer>
+<!-- /SITE FOOTER -->
+</body>
+</html>
