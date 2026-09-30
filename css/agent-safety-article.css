@@ -14,7 +14,7 @@
 .safety-article .blog-content { overflow-wrap: anywhere; color: var(--bd-copy); }
 .safety-article .blog-content h2 { font-size: clamp(23px,3vw,29px); color: var(--comic-ink); scroll-margin-top: 110px; }
 .safety-article .blog-content strong { color: var(--comic-ink); }
-.safety-article .blog-content ul { padding-left: 1.5em; }
+.safety-article .blog-content :is(ul,ol) { padding-left: 1.5em; }
 .safety-article .blog-content li { margin: 10px 0; }
 .safety-article blockquote { padding: 8px 24px; margin: 28px 0; border-left: 4px solid var(--comic-red); background: var(--bd-inset); font-style: normal; }
 .safety-article .blog-image { margin: 34px 0; }
